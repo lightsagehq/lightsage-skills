@@ -1,90 +1,130 @@
-# Resource model
+# Lightsage resource and command model
 
-## What you can do to each resource
+Use this reference to translate between a Lightsage resource and the CLI
+commands that discover, read, or change it. Command paths were verified against
+Lightsage CLI 0.6.7, built 2026-09-06. Re-check `lightsage --usage` and the
+specific command's help before execution.
 
-| Resource | Command group | Create | Read | Update | Delete |
-| --- | --- | --- | --- | --- | --- |
-| Eval definitions | `api-performance evals` | — | ✓ | ✓ | — |
-| Custom evals | `api-performance custom-evals` | ✓ | ✓ | ✓ | ✓ |
-| Starter projects | `api-performance starter-projects` | ✓ | ✓ | ✓ | ✓ |
-| Actions | `api-performance actions` | — | ✓ | ✓ | — |
-| Config | `api-performance config` | — | ✓ | ✓ | — |
-| Targets | `api-performance targets` | — | list only | — | — |
-| Sources | `api-performance sources` | — | list only | — | — |
-| Skills | `api-performance skills` | — | list only | — | — |
-| Run history | `api-performance runs` | — | ✓ | — | — |
-| Eval runs | `eval-runs` | ✓ | ✓ | — | — |
-| Prompts and topics | `prompts` | ✓ | ✓ | ✓ | ✓ |
-| Tasks | `tasks` | — | ✓ | ✓ | — |
-| Opportunities | `opportunities` | — | list only | — | — |
-| Visibility | `visibility` | — | ✓ | — | — |
-| Site audit | `site-audit` | — | ✓ | — | — |
-| Content | `content` | ✓ | ✓ | — | — |
+The tables map command paths, not every flag. Obtain required flags and current
+enums from the installed binary.
 
-## Read the catalogs, change the config
+## Core relationships
 
-Targets, sources, and skills are catalogs. You cannot create or edit them:
+```text
+Topic
+└── Prompt
+    └── Prompt run
 
-- **Sources** are configured for the workspace and cannot be created or edited
-  from the CLI; `--source-id` only scopes other commands. `sources list` hides
-  the sources Lightsage manages itself, such as `use_cases`, unless you pass
-  `--include-system`.
-- **Targets** list the models and coding agents evals can run against. To
-  change what runs, copy a `target` object into `config update`.
-- **Skills** list what can be supplied as skill context. To change what an
-  eval uses, pass `skill_ids` to `evals update` with `skills_mode` set to
-  `selected`. `skills list` filters silently: omitting `--enabled` returns
-  only enabled skills, and omitting `--stale` returns only non-stale ones, so
-  the default listing is a subset.
+Opportunity    Task    Site audit    Content
 
-## Tell the eval resources apart
+Eval
+└── Configuration
+    ├── Repository
+    ├── Environment
+    ├── CLI
+    ├── Skill
+    ├── MCP server
+    └── Include docs
+        + Agent
+          ↓
+       Eval run
+          ↓
+       Eval result
+```
 
-Four resources share the word "eval":
+These are separate resource lanes. Do not infer that an opportunity owns a task
+or that an eval-run ID can retrieve an eval result unless the returned data
+explicitly establishes that relationship.
 
-| Resource | What it is | Created by |
-| --- | --- | --- |
-| Eval definitions | One check per discovered API operation | Lightsage, from a source |
-| Custom evals | A free-form task prompt | You |
-| Eval runs | A queued execution | `eval-runs create` |
-| Run history | Completed result rows | Runs finishing |
+## Workspace and authentication
 
-Two relationships explain the overlap:
-
-- Every custom eval owns an eval definition. That definition also appears in
-  `api-performance evals list`, carrying `source_id` null and an
-  `operation_id` equal to the custom eval's ID.
-- `api-performance runs list` returns result rows, not jobs, and excludes
-  custom eval rows. List those with
-  `api-performance custom-evals history list`.
-
-## Follow the ID chain
-
-| ID | Comes from |
+| Purpose | CLI command |
 | --- | --- |
-| `topic_id` | `prompts config retrieve` — there is no topics list command |
-| `source_id` | `api-performance sources list` |
-| `skill_ids` | `api-performance skills list` |
-| `custom_eval_id` | `api-performance custom-evals list` |
-| `eval_id` / `operation_id` | `api-performance evals list` |
-| `eval_run_id` | the `id` returned by `eval-runs create` — there is no `eval-runs list`, so keep it |
-| `env_profile_ids` | `env_profiles[]` in `api-performance config retrieve` |
-| `target` | copy the whole object from `api-performance targets list` |
-| `content_id` | the `id` returned by `content generate-draft` — no endpoint lists content, so keep it |
-| `task_id` | `tasks list` |
-| `action_id` | `api-performance actions list` |
+| Inspect configured credential sources | `lightsage auth whoami` |
+| Configure credentials interactively | `lightsage auth login` |
+| Remove configured credentials | `lightsage auth logout` |
+| Check public API availability | `lightsage status get` |
+| Validate the current credential | `lightsage status auth-status-get` |
 
-## Know what is not possible
+The public status check does not validate the API key. Credential values shown
+by `auth whoami` are masked.
 
-- No command cancels a run, despite the `jobs:cancel` scope.
-- The site audit is read-only.
-- Secret values are write-only. `api-performance config retrieve` returns
-  environment variable names in `env_var_keys` and in each entry of
-  `env_profiles`, never values.
-- Paging is uneven. `api-performance custom-evals history list` takes
-  `--limit` and `--offset`; `api-performance runs list` and
-  `opportunities list` take `--limit` and `--since`;
-  `api-performance actions list` takes `--limit` only. `prompts list`,
-  `tasks list`, and `api-performance evals list` are unpaginated and return
-  everything.
-- `api-performance runs list` returns no pagination cursor, so reach older
-  runs by narrowing `--since`, not by paging.
+## Prompts and visibility work
+
+| Resource | Discover or read | Create or change | ID relationship |
+| --- | --- | --- | --- |
+| Topic | `lightsage prompts topics list` | `lightsage prompts topics create`, `update`, `delete` | Topic IDs are accepted by prompt list, create, and update operations. |
+| Prompt | `lightsage prompts list`, `retrieve` | `lightsage prompts create`, `update`, `delete` | Prompt IDs select a prompt and may filter prompt runs. |
+| Prompt run | `lightsage prompts runs list`, `retrieve` | None | A prompt-run ID retrieves one stored answer. |
+| Opportunity | `lightsage opportunities list`, `retrieve` | None | An opportunity ID retrieves one computed finding and its execution context. |
+| Task | `lightsage tasks list`, `retrieve` | `lightsage tasks update` | A task ID retrieves or updates one persisted action item. |
+| Content | `lightsage content retrieve` | `lightsage content drafts create`, `lightsage content finalize` | Draft creation returns a content ID used by retrieve and finalize. |
+| Site audit | `lightsage site-audits list`, `retrieve` | None | A site ID retrieves one existing audited-page result. |
+
+Listing and retrieving site audits reads existing data; it does not start a
+crawl. Creating drafts and finalizing content consume credits.
+
+## Eval definitions and runtime resources
+
+An eval defines the task and judge. Its type determines the subject:
+
+| Eval type | Subject |
+| --- | --- |
+| `workflow` | No subject ID |
+| `mcp` | One MCP-server ID |
+| `cli` | One CLI ID |
+| `skill` | One reusable-skill ID |
+
+| Resource | Discover or read | Create or change | Used by |
+| --- | --- | --- | --- |
+| Eval | `lightsage evals list`, `retrieve` | `lightsage evals create`, `update`, `delete` | Eval ID scopes configurations and starts runs. |
+| Configuration | `lightsage evals configurations list`, `retrieve` | `lightsage evals configurations create`, `update`, `delete` | Configuration ID selects the saved runtime for a run. Every configuration command also needs its eval ID. |
+| Agent | `lightsage agents list` | None | Agent ID chooses one runnable harness-and-model combination for a run. |
+| Repository | `lightsage repositories list`, `retrieve` | `lightsage repositories create`, `update`, `delete` | Repository ID gives a configuration its Git workspace. Creation uses `--repo-url`. |
+| Environment | `lightsage environments list` | None | Environment ID gives a configuration its reusable runtime environment. |
+| MCP server | `lightsage mcp-servers list` | None | MCP-server IDs may identify an MCP eval subject or support a configuration. |
+| CLI | `lightsage clis list` | None | CLI IDs may identify a CLI eval subject or support a configuration. |
+| Skill | `lightsage skills list` | None | Skill IDs may identify a skill eval subject or support a configuration. |
+
+`agents`, `environments`, `mcp-servers`, `clis`, and `skills` are list-only in
+this CLI version. If a required catalog is empty, do not invent a create
+command. Explain that the resource must be configured through another supported
+surface and ask before switching interfaces.
+
+## Runs and results
+
+| Stage | CLI command | Required IDs or output |
+| --- | --- | --- |
+| Start | `lightsage eval-runs create` | Takes eval, configuration, and agent IDs; returns an eval-run ID. |
+| List jobs | `lightsage eval-runs list` | Returns lifecycle state and progress. |
+| Poll one job | `lightsage eval-runs retrieve` | Takes the eval-run ID. Poll until a terminal status. |
+| List outcomes | `lightsage eval-results list` | Returns completed results and their result IDs. |
+| Inspect outcome | `lightsage eval-results retrieve` | Takes a result ID, not an eval-run ID. |
+
+Starting an eval run consumes credits. Progress may reach 100 percent before
+the parent status is terminal, so use the run's status to decide when polling is
+complete.
+
+## Typical ID flow
+
+```text
+evals list
+  → eval ID
+  → evals configurations list
+  → configuration ID
+
+agents list
+  → agent ID
+
+eval ID + configuration ID + agent ID
+  → eval-runs create
+  → eval-run ID
+  → eval-runs retrieve
+
+eval-results list
+  → result ID
+  → eval-results retrieve
+```
+
+For every flow, list before guessing, match on stable fields, and retrieve the
+selected resource when identity affects a write or destructive action.
