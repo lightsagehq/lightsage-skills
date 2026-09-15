@@ -8,14 +8,19 @@ description: Diagnose Lightsage eval runs and completed results, then turn failu
 Turn completed eval evidence into a small set of fixes that address the most
 likely causes. Do not equate every failed judgment with a product defect.
 
-Use the `lightsage-cli` skill for authentication, current command discovery,
-structured output, and resource-ID handling.
+## Choose the interface
+
+Use the connected Lightsage MCP capability for plugin workflows. Use the CLI
+only when the user explicitly requests terminal, scripting, or CI execution.
+If the chosen interface is unavailable or unauthenticated, report the blocker;
+do not fabricate evidence or silently switch interfaces.
 
 ## Choose the evidence scope
 
 Use explicit result IDs when supplied. Otherwise select a bounded recent result
-window with `lightsage eval-results list --since`, or inspect a named eval run
-with `lightsage eval-runs retrieve` before looking for its outcomes.
+window with the available **list eval results** operation, or inspect a named
+eval run with the available **retrieve eval run** operation before looking for
+its outcomes.
 
 An eval-run ID tracks job lifecycle; a result ID retrieves diagnostic output.
 Never pass one where the other is required. The current public result record

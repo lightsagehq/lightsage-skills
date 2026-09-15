@@ -1,8 +1,8 @@
 # Prompt-run evidence and action guide
 
 Use this guide after selecting a bounded set of prompt runs. Commands and fields
-were verified against Lightsage CLI 0.6.7 and the public v2 contract retrieved
-2026-09-08. Re-check the installed CLI before execution.
+reflect the public v2 contract retrieved 2026-09-08. Confirm the current
+response shape before relying on optional fields.
 
 ## Evidence available
 
@@ -50,12 +50,12 @@ such as "improve visibility" or "create more content."
 
 ## Opportunities and tasks
 
-`lightsage opportunities list` returns computed findings for a date window,
-including priority, impact score, action text, and an `execution_prompt`.
-Recompute it over the same window used for the runs. The opportunity ID is
-stable for the same finding, but its impact score can change with the window.
+The **list opportunities** operation returns computed findings for a date
+window, including priority, impact score, action text, and an
+`execution_prompt`. Query the same window used for the runs. The opportunity ID
+is stable for the same finding, but its impact score can change with the window.
 
-`lightsage tasks list` returns persisted action items and status counts. Use it
-to detect an already queued or completed action. The CLI can update an existing
-task but cannot create one, so keep newly proposed actions in the report unless
-the user requests another supported destination.
+The **list tasks** operation returns persisted action items and status counts.
+Use it to detect an already queued or completed action. Keep newly proposed
+actions in the report unless the selected capability advertises an authorized
+way to persist them.

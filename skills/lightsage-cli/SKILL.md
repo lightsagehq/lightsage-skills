@@ -1,6 +1,6 @@
 ---
 name: lightsage-cli
-description: Operate and troubleshoot the Lightsage CLI for prompts, opportunities, tasks, content, site audits, and eval resources. Use when a request involves the `lightsage` command or when Lightsage workspace state must be inspected or changed through the CLI. Do not use it to design eval methodology, choose a customer growth workflow, or operate Lightsage through the API or MCP.
+description: Operate and troubleshoot Lightsage from a terminal, shell script, or CI workflow. Use only when the user explicitly asks for the `lightsage` CLI, command-line execution, scripting, or CI/CD. Do not use for outcome analysis that can be completed through a connected Lightsage MCP capability.
 ---
 
 # Lightsage CLI
@@ -120,4 +120,6 @@ This skill covers CLI operation across Lightsage product areas. It does not
 choose prompts, judges, models, growth priorities, or end-to-end onboarding
 journeys. It does not silently fall back to the public API, MCP, dashboard, or
 private Lightsage procedures when the CLI lacks an operation. Explain the
-boundary and ask before changing interfaces.
+boundary and ask before changing interfaces. Keep outcome-oriented prompt-run
+and eval-result reasoning in their dedicated skills; this skill supplies CLI
+mechanics only when the request explicitly selects a command-line workflow.

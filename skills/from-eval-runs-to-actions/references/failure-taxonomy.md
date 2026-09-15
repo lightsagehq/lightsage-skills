@@ -1,8 +1,8 @@
 # Eval failure taxonomy
 
 Use this reference to keep diagnoses tied to the layer that can actually fix
-them. Fields were verified against Lightsage CLI 0.6.7 and the public v2
-contract retrieved 2026-09-08.
+them. Fields reflect the public v2 contract retrieved 2026-09-08. Confirm the
+current response shape before relying on optional fields.
 
 ## Evidence hierarchy
 
