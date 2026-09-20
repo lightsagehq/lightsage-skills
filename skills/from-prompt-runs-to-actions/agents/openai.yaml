@@ -1,0 +1,15 @@
+interface:
+  display_name: "Prompt Runs to Actions"
+  short_description: "Turn visibility evidence into prioritized actions"
+  default_prompt: "Use $from-prompt-runs-to-actions to review my recent prompt runs and recommend the highest-impact actions."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "lightsage"
+      description: "Lightsage prompt-run, opportunity, and task tools"
+      transport: "streamable_http"
+      url: "https://mcp.lightsage.com/mcp"
+
+policy:
+  allow_implicit_invocation: true

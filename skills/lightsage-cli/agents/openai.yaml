@@ -1,0 +1,9 @@
+interface:
+  display_name: "Lightsage CLI"
+  short_description: "Operate Lightsage from a terminal or CI"
+  default_prompt: "Use $lightsage-cli to inspect my Lightsage workspace from the terminal."
+
+policy:
+  products:
+    - CODEX
+  allow_implicit_invocation: false

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lightsage",
+  "version": "0.1.0",
+  "description": "Turn prompt-run and eval evidence into prioritized, verifiable actions",
+  "author": {
+    "name": "Lightsage",
+    "url": "https://lightsage.com"
+  },
+  "homepage": "https://lightsage.com/docs",
+  "repository": "https://github.com/lightsagehq/lightsage-skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-experience",
+    "evals",
+    "visibility",
+    "analytics",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Lightsage",
+        "shortDescription": "Turn agent evidence into prioritized actions",
+        "longDescription": "Analyze Lightsage prompt runs and eval results, diagnose patterns, and turn evidence into focused next steps.",
+        "developerName": "Lightsage",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://lightsage.com",
+        "privacyPolicyURL": "https://lightsage.com/privacy",
+        "termsOfServiceURL": "https://lightsage.com/terms",
+        "defaultPrompt": [
+          "Review my recent prompt runs and recommend the three highest-impact actions.",
+          "Diagnose my latest failed eval and propose the smallest useful fix.",
+          "Use the Lightsage CLI to inspect my workspace from the terminal."
+        ],
+        "brandColor": "#000000",
+        "composerIcon": "./assets/lightsage-logo.svg",
+        "logo": "./assets/lightsage-logo.svg",
+        "logoDark": "./assets/lightsage-logo-dark.svg"
+      }
+    }
+  }
+}

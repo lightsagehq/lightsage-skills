@@ -1,0 +1,15 @@
+interface:
+  display_name: "Eval Runs to Actions"
+  short_description: "Turn eval failures into focused fixes"
+  default_prompt: "Use $from-eval-runs-to-actions to diagnose my latest failed eval and propose the smallest useful fix."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "lightsage"
+      description: "Lightsage eval-run and eval-result tools"
+      transport: "streamable_http"
+      url: "https://mcp.lightsage.com/mcp"
+
+policy:
+  allow_implicit_invocation: true
