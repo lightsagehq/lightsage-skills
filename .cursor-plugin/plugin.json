@@ -1,0 +1,21 @@
+{
+  "name": "lightsage",
+  "displayName": "Lightsage",
+  "description": "Skills and MCP server for Lightsage — analyze prompt runs and eval evidence, diagnose issues, and turn findings into prioritized actions.",
+  "version": "0.1.0",
+  "logo": "assets/lightsage-logo.svg",
+  "author": {
+    "name": "Lightsage",
+    "url": "https://lightsage.com"
+  },
+  "homepage": "https://lightsage.com/docs",
+  "repository": "https://github.com/lightsagehq/lightsage-skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-experience",
+    "evals",
+    "visibility",
+    "analytics",
+    "mcp"
+  ]
+}

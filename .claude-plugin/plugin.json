@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "lightsage",
+  "description": "Turn prompt-run and eval evidence into prioritized, verifiable actions",
+  "version": "0.1.0",
+  "mcpServers": {
+    "lightsage": {
+      "type": "http",
+      "url": "https://mcp.lightsage.com/mcp"
+    }
+  },
+  "author": {
+    "name": "Lightsage",
+    "url": "https://lightsage.com"
+  },
+  "homepage": "https://lightsage.com/docs",
+  "repository": "https://github.com/lightsagehq/lightsage-skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-experience",
+    "evals",
+    "visibility",
+    "analytics",
+    "mcp"
+  ]
+}

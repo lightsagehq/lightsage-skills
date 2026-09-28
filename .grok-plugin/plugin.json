@@ -1,0 +1,20 @@
+{
+  "name": "lightsage",
+  "version": "0.1.0",
+  "description": "Lightsage skills for Grok — analyze prompt runs and eval results, diagnose patterns, and turn evidence into prioritized actions.",
+  "logo": "assets/lightsage-logo.svg",
+  "author": {
+    "name": "Lightsage",
+    "url": "https://lightsage.com"
+  },
+  "homepage": "https://lightsage.com/docs",
+  "repository": "https://github.com/lightsagehq/lightsage-skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-experience",
+    "evals",
+    "visibility",
+    "analytics",
+    "mcp"
+  ]
+}

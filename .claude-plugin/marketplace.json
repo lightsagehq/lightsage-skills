@@ -1,0 +1,27 @@
+{
+  "name": "lightsage-skills",
+  "metadata": {
+    "description": "Lightsage skills and MCP tools for Claude Code"
+  },
+  "owner": {
+    "name": "Lightsage",
+    "url": "https://lightsage.com"
+  },
+  "plugins": [
+    {
+      "name": "lightsage",
+      "description": "Turn prompt-run and eval evidence into prioritized, verifiable actions",
+      "version": "0.1.0",
+      "source": "./",
+      "category": "developer-tools",
+      "homepage": "https://lightsage.com/docs",
+      "tags": [
+        "agent-experience",
+        "evals",
+        "visibility",
+        "analytics",
+        "mcp"
+      ]
+    }
+  ]
+}
