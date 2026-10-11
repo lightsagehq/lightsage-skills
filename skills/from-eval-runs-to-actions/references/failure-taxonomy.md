@@ -1,7 +1,7 @@
 # Eval failure taxonomy
 
 Use this reference to keep diagnoses tied to the layer that can actually fix
-them. Fields reflect the public v2 contract retrieved 2026-09-08. Confirm the
+them. Fields reflect the public v2 contract retrieved 2026-10-11. Confirm the
 current response shape before relying on optional fields.
 
 ## Evidence hierarchy
@@ -11,10 +11,11 @@ Start with the judge outcome, then test it against execution evidence:
 | Evidence | What it can establish | What it cannot establish alone |
 | --- | --- | --- |
 | run `status`, `stage`, `progress`, `error`, and timestamps | Whether the job reached a terminal state and where a run-level failure surfaced | The agent output or judge outcome when no result exists |
-| `passed`, `score`, `failure_reasons` | The judge's verdict and stated rationale | The true root cause |
-| `prompt` and `output` | What was requested and what the agent produced | Whether the environment allowed a fair attempt |
-| `exit_code`, stdout, stderr | Process success, errors, warnings, and missing prerequisites | Product correctness when execution never reached the product |
-| `tool_calls` | Which operations were attempted and with what visible arguments | Hidden state, provider internals, or omitted calls |
+| result `passed`, `score`, `failure_reasons` | The judge's verdict and stated rationale | The true root cause |
+| `grader_results` and their `criteria_verdicts` | Which criteria each judge passed or failed, with the evidence it cited | Whether the judge applied a criterion fairly |
+| `preference_result` | Which company an Agent Preference attempt recommended | Why the agent recommended it |
+| result `prompt` and run `analysis` | What was requested and the stored diagnosis of the attempt | Whether the environment allowed a fair attempt |
+| trace tool, command, and error events | Which operations the attempt ran, what they returned, and where execution stopped | Hidden state, provider internals, or omitted calls |
 | `latency_ms` | End-to-end duration for the result | Which component caused the delay without supporting traces |
 
 Null fields mean the evidence is unavailable. Do not reinterpret them as a
