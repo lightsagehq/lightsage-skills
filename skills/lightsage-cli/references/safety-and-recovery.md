@@ -6,8 +6,8 @@ effect, or when a failure blocks normal execution.
 ## Act on clear intent
 
 - Run relevant reads directly.
-- A clear request to create, update, generate content, start an eval run, or
-  delete exact items authorizes that matching action. Do not reconfirm it.
+- A clear request to create, update, start an eval run, or delete exact items
+  authorizes that matching action. Do not reconfirm it.
 - Inspect current state first when identity or existing configuration matters.
 - Use `--dry-run` to validate a write when useful. Continue without pausing if
   the serialized request matches the user's intent.
