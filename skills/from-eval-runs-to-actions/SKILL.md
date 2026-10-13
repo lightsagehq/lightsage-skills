@@ -31,8 +31,11 @@ for the latest failed eval, walk the list newest first. A run matches when it
 is `failed`, has `progress.failed` above zero, or, once retrieved, has a result
 with `passed` false or an Agent Preference `preference_result.outcome` of
 `lost` or `tie`. Retrieve only the `completed` runs whose list entry does not
-already match. Take the first match and state which of these matched. If ten
-retrieved runs have no match, stop and report how far back you looked.
+already match. Take the first match and say in plain words why it counts as
+failed: the run itself failed, some attempts errored before the judge could
+score them, the judge failed an attempt, or the agent recommended the
+competitor or neither company. If ten retrieved runs have no match, stop and
+report how far back you looked.
 
 Then use the available **retrieve eval run** operation. Once a run's attempts
 finish, it also returns their results and analysis, so there is no separate
@@ -96,24 +99,51 @@ do not manufacture a result-level verdict.
 Do not claim that one configuration outperformed another unless configuration
 identity is available from the invocation context or another reliable source.
 
-## Produce action cards
+## Write the report
 
-Return at most five actions unless the user asks for an exhaustive report.
-Order them by expected impact, recurrence, confidence, and effort. Each action
-must contain:
+Use this shape for a single-run diagnosis, and adapt it for a recurring review
+or a comparison:
 
-- **Action and priority**
-- **Evidence:** run and result IDs, eval and agent IDs when available,
-  observed failure signature, and the relevant result field or trace event
-- **Classification and diagnosis:** including whether the cause is observed or
-  inferred
-- **Change:** the concrete artifact or behavior to modify and likely owner
-- **Confidence and effort:** `high`, `medium`, or `low`
-- **Validation:** the smallest rerun or comparison that could confirm the fix
+1. **Headline:** one bold line naming the eval and the cause, such as
+   "Diagnosis: Speech-to-Text eval failed because the judge expected tests the
+   prompt never asked for".
+2. **Which run:** the run ID and when it was created, why it counts as failed,
+   and whether the run itself finished normally or failed in infrastructure.
+   When the newest run that ended failed is a different run, name it with its
+   date and eval and offer to look at it instead.
+3. **Summary table:** rows for the eval name with a short ID, the agent, the
+   result ID with the attempt count and whether results were truncated, and the
+   score with each judge's score and whether it passed.
+4. **What worked:** a short paragraph on the behavior that passed, including
+   builds, tests, and how the agent recovered from errors.
+5. **What failed:** a numbered list with one item per failing judge or
+   criterion: the judge name, its verdict, and the concrete evidence, such as
+   the file, command, or missing behavior.
+6. **Root cause:** one paragraph, labeled as seen directly or inferred.
+7. **Actions:** at most five unless the user asks for an exhaustive report,
+   ordered by expected impact, recurrence, confidence, and effort. Title each
+   with what to do and its priority, then give:
+   - **Classification:** the layer, and whether the cause is observed or
+     inferred
+   - **Evidence:** only when it goes beyond what the report already showed,
+     such as another recent run that points to the same cause
+   - **Change:** the concrete artifact or behavior to modify and likely owner
+   - **Confidence and effort:** `high`, `medium`, or `low`
+   - **Validation:** the smallest rerun or comparison that could confirm the
+     fix
+8. **Limits:** a short paragraph naming what the diagnosis rests on and what
+   you did not inspect.
+9. **Next step:** offer the most useful follow-up, such as applying action 1
+   and rerunning.
 
 Lead with aggregate pass rate and score changes only when the result set is a
 valid comparison. Report infrastructure failures separately from evaluated
-failures, and name important limitations in the evidence.
+failures.
+
+Write for someone who has not read the API. Describe outcomes in plain words,
+such as "the judge failed the only attempt", instead of quoting field names
+and values like `passed: false`, `progress.failed`, or
+`preference_result.outcome`. Keep IDs as references, not as the explanation.
 
 ## Act only to the requested depth
 
