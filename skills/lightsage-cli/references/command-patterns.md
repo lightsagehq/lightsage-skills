@@ -1,7 +1,7 @@
 # Lightsage CLI command patterns
 
 These examples illustrate reusable mechanics verified against Lightsage CLI
-0.6.7. Re-check the installed binary before copying them into an execution.
+0.11.11. Re-check the installed binary before copying them into an execution.
 
 ## Discover the surface
 
@@ -27,21 +27,20 @@ second validates the credential with Lightsage.
 ## List, select, then retrieve
 
 ```bash
-lightsage eval-results list --since 7d --limit 20 --output-format json
-lightsage eval-results retrieve \
-  --result-id "$LIGHTSAGE_RESULT_ID" \
-  --output-format json
+lightsage eval-runs list --limit 20 --output-format json
+lightsage evals get "$LIGHTSAGE_EVAL_RUN_ID" --output-format json
 ```
 
-Set `LIGHTSAGE_RESULT_ID` from the list response. Do not substitute an eval-run
-ID. If the list is empty, stop and report that there is no completed result to
-retrieve.
+Set `LIGHTSAGE_EVAL_RUN_ID` from the list response. Once a run finishes,
+`evals get` also returns its per-attempt `results` and `analysis`; there is no
+separate result command. If the list is empty, stop and report that there is no
+eval run to retrieve.
 
 Use `--jq` after seeing the full response shape:
 
 ```bash
-lightsage eval-results list --limit 20 --output-format json
-lightsage eval-results list --limit 20 --jq '.data[] | {id, passed, score}'
+lightsage eval-runs list --limit 20 --output-format json
+lightsage eval-runs list --limit 20 --jq '.data[] | {id, status, eval_name}'
 ```
 
 Treat filtered values as JSON. Do not assume a scalar is emitted as unquoted

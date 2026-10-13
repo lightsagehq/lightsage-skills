@@ -46,19 +46,21 @@ the binary.
 
 ```text
 Topic → Prompt → Prompt run
-Opportunity    Task    Site audit    Draft → Final content
+Opportunity    Task    Site audit
 
-Eval subject + Configuration + Agent → Eval run → Eval result
-               ├── Repository
-               ├── Environment
-               ├── CLIs and skills
-               ├── MCP servers
-               └── Docs
+Eval + Configuration + Agent → Eval run → Results and analysis
+       ├── Repository
+       ├── Environment
+       ├── CLIs and skills
+       ├── MCP servers
+       └── Docs
 ```
 
-Run IDs and result IDs are different: poll with the run ID and inspect the
-outcome with the result ID. The resources from `lightsage skills list` are
-reusable Lightsage context packages, not local Agent Skills such as this one.
+Use the eval-run ID for everything after a run starts: `lightsage evals get`
+returns its status and, once attempts finish, their results and analysis. There
+is no separate eval-result command. The resources from `lightsage skills list`
+are reusable Lightsage context packages, not local Agent Skills such as this
+one.
 
 Treat all IDs as opaque. List the relevant catalog, match on stable fields, and
 retrieve the selected resource when identity matters. If multiple resources
