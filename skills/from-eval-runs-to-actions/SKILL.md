@@ -19,14 +19,20 @@ do not fabricate evidence or silently switch interfaces.
 
 Use explicit run IDs when supplied. Otherwise select a bounded recent window
 with the available **list eval runs** operation. It returns custom eval runs
-newest first, including runs started in the Lightsage app and through the API,
-with their status and per-attempt progress. Runs started on a schedule are not
-listed; when the list is empty or lacks an expected run, say so instead of
-concluding that nothing failed.
+newest first, whether they were started in the Lightsage app, on a schedule, by
+onboarding or a pull request, or through the API, with their status and
+per-attempt progress. When the list is empty or lacks an expected run, say so
+instead of concluding that nothing failed.
 
-When the user asks for the latest failed eval, take the newest run that ended
-`failed`, finished with failed attempts (`progress.failed` above zero), or
-returned a failing verdict, and state which of these matched.
+The run list does not carry judge verdicts. `progress.failed` counts attempts
+that errored before a verdict, and a run whose attempts all finished is
+`completed` even when the judge failed every one of them. When the user asks
+for the latest failed eval, walk the list newest first. A run matches when it
+is `failed`, has `progress.failed` above zero, or, once retrieved, has a result
+with `passed` false or an Agent Preference `preference_result.outcome` of
+`lost` or `tie`. Retrieve only the `completed` runs whose list entry does not
+already match. Take the first match and state which of these matched. If ten
+retrieved runs have no match, stop and report how far back you looked.
 
 Then use the available **retrieve eval run** operation. Once a run's attempts
 finish, it also returns their results and analysis, so there is no separate
