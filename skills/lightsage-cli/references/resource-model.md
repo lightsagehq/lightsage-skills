@@ -2,7 +2,7 @@
 
 Use this reference to translate between a Lightsage resource and the CLI
 commands that discover, read, or change it. Command paths were verified against
-Lightsage CLI 0.6.7, built 2026-09-06. Re-check `lightsage --usage` and the
+Lightsage CLI 0.11.11, built 2026-10-06. Re-check `lightsage --usage` and the
 specific command's help before execution.
 
 The tables map command paths, not every flag. Obtain required flags and current
@@ -15,7 +15,7 @@ Topic
 └── Prompt
     └── Prompt run
 
-Opportunity    Task    Site audit    Content
+Opportunity    Task    Site audit
 
 Eval
 └── Configuration
@@ -28,13 +28,11 @@ Eval
         + Agent
           ↓
        Eval run
-          ↓
-       Eval result
+       └── Results and analysis, once attempts finish
 ```
 
 These are separate resource lanes. Do not infer that an opportunity owns a task
-or that an eval-run ID can retrieve an eval result unless the returned data
-explicitly establishes that relationship.
+unless the returned data explicitly establishes that relationship.
 
 ## Workspace and authentication
 
@@ -58,33 +56,28 @@ by `auth whoami` are masked.
 | Prompt run | `lightsage prompts runs list`, `retrieve` | None | A prompt-run ID retrieves one stored answer. |
 | Opportunity | `lightsage opportunities list`, `retrieve` | None | An opportunity ID retrieves one computed finding and its execution context. |
 | Task | `lightsage tasks list`, `retrieve` | `lightsage tasks update` | A task ID retrieves or updates one persisted action item. |
-| Content | `lightsage content retrieve` | `lightsage content drafts create`, `lightsage content finalize` | Draft creation returns a content ID used by retrieve and finalize. |
 | Site audit | `lightsage site-audits list`, `retrieve` | None | A site ID retrieves one existing audited-page result. |
 
 Listing and retrieving site audits reads existing data; it does not start a
-crawl. Creating drafts and finalizing content consume credits.
+crawl.
 
 ## Eval definitions and runtime resources
 
-An eval defines the task and judge. Its type determines the subject:
-
-| Eval type | Subject |
-| --- | --- |
-| `workflow` | No subject ID |
-| `mcp` | One MCP-server ID |
-| `cli` | One CLI ID |
-| `skill` | One reusable-skill ID |
+An eval defines its prompts and judges. It can also save default agents, CLIs,
+MCP servers, setup and cleanup commands, a persona, tags, and a run count.
 
 | Resource | Discover or read | Create or change | Used by |
 | --- | --- | --- | --- |
 | Eval | `lightsage evals list`, `retrieve` | `lightsage evals create`, `update`, `delete` | Eval ID scopes configurations and starts runs. |
+| Eval template | `lightsage eval-templates list`, `retrieve` | `lightsage eval-templates create`, `update`, `delete` | Template ID and version feed `lightsage evals batch-create`. |
+| Agent Preference eval | `lightsage agent-preference evals list`, `retrieve`, `results list` | `lightsage agent-preference evals create`, `update`, `delete` | Agent Preference evals are not returned by `lightsage evals list`. Start them with `lightsage evals run`. |
 | Configuration | `lightsage evals configurations list`, `retrieve` | `lightsage evals configurations create`, `update`, `delete` | Configuration ID selects the saved runtime for a run. Every configuration command also needs its eval ID. |
 | Agent | `lightsage agents list` | None | Agent ID chooses one runnable harness-and-model combination for a run. |
 | Repository | `lightsage repositories list`, `retrieve` | `lightsage repositories create`, `update`, `delete` | Repository ID gives a configuration its Git workspace. Creation uses `--repo-url`. |
 | Environment | `lightsage environments list` | None | Environment ID gives a configuration its reusable runtime environment. |
-| MCP server | `lightsage mcp-servers list` | None | MCP-server IDs may identify an MCP eval subject or support a configuration. |
-| CLI | `lightsage clis list` | None | CLI IDs may identify a CLI eval subject or support a configuration. |
-| Skill | `lightsage skills list` | None | Skill IDs may identify a skill eval subject or support a configuration. |
+| MCP server | `lightsage mcp-servers list` | None | MCP-server IDs can be saved on an eval or configuration, or passed to a run. |
+| CLI | `lightsage clis list` | None | CLI IDs can be saved on an eval or configuration, or passed to a run. |
+| Skill | `lightsage skills list` | None | Skill IDs can be saved on a configuration or passed to a direct run. |
 
 `agents`, `environments`, `mcp-servers`, `clis`, and `skills` are list-only in
 this CLI version. If a required catalog is empty, do not invent a create
@@ -95,11 +88,12 @@ surface and ask before switching interfaces.
 
 | Stage | CLI command | Required IDs or output |
 | --- | --- | --- |
-| Start | `lightsage eval-runs create` | Takes eval, configuration, and agent IDs; returns an eval-run ID. |
-| List jobs | `lightsage eval-runs list` | Returns lifecycle state and progress. |
-| Poll one job | `lightsage eval-runs retrieve` | Takes the eval-run ID. Poll until a terminal status. |
-| List outcomes | `lightsage eval-results list` | Returns completed results and their result IDs. |
-| Inspect outcome | `lightsage eval-results retrieve` | Takes a result ID, not an eval-run ID. |
+| Start | `lightsage evals run` | Takes an eval ID, or prompts, judges, and agents for a direct run; returns an eval-run ID. |
+| List runs | `lightsage eval-runs list` | Returns runs newest first with lifecycle state and progress. |
+| Poll one run | `lightsage evals get` | Takes the eval-run ID. Poll until a terminal status; it then also returns results and analysis. |
+| Follow live | `lightsage evals monitor` | Optional eval-run ID; omit it to follow every active run. |
+| Read the event log | `lightsage evals trace` | Takes the eval-run ID. Page with `--after-id`. |
+| Cancel | `lightsage evals cancel` | Takes the eval-run ID. |
 
 Starting an eval run consumes credits. Progress may reach 100 percent before
 the parent status is terminal, so use the run's status to decide when polling is
@@ -116,14 +110,15 @@ evals list
 agents list
   → agent ID
 
-eval ID + configuration ID + agent ID
-  → eval-runs create
+eval ID + optional configuration ID + agent ID
+  → evals run
   → eval-run ID
-  → eval-runs retrieve
+  → evals get
 
-eval-results list
-  → result ID
-  → eval-results retrieve
+eval-runs list
+  → eval-run ID
+  → evals get
+  → evals trace, when the results need execution detail
 ```
 
 For every flow, list before guessing, match on stable fields, and retrieve the

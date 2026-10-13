@@ -17,38 +17,52 @@ do not fabricate evidence or silently switch interfaces.
 
 ## Choose the evidence scope
 
-Use explicit result IDs when supplied. Otherwise select a bounded recent result
-window with the available **list eval results** operation, or inspect a named
-eval run with the available **retrieve eval run** operation before looking for
-its outcomes.
+Use explicit run IDs when supplied. Otherwise select a bounded recent window
+with the available **list eval runs** operation. It returns custom eval runs
+newest first, whether they were started in the Lightsage app, on a schedule, by
+onboarding or a pull request, or through the API, with their status and
+per-attempt progress. When the list is empty or lacks an expected run, say so
+instead of concluding that nothing failed.
 
-An eval-run ID tracks job lifecycle; a result ID retrieves diagnostic output.
-Never pass one where the other is required. The current public result record
-does not expose its eval-run or configuration ID, and run detail does not expose
-child result IDs. Therefore:
+The run list does not carry judge verdicts. `progress.failed` counts attempts
+that errored before a verdict, and a run whose attempts all finished is
+`completed` even when the judge failed every one of them. When the user asks
+for the latest failed eval, walk the list newest first. A run matches when it
+is `failed`, has `progress.failed` above zero, or, once retrieved, has a result
+with `passed` false or an Agent Preference `preference_result.outcome` of
+`lost` or `tie`. Retrieve only the `completed` runs whose list entry does not
+already match. Take the first match and state which of these matched. If ten
+retrieved runs have no match, stop and report how far back you looked.
 
-- treat an explicit result ID as exact;
-- treat a unique match by eval, agent, and timestamp as inferred lineage and
-  label it that way;
-- when several results could belong to a run, analyze the bounded result set or
-  state that exact attribution is unavailable instead of guessing.
+Then use the available **retrieve eval run** operation. Once a run's attempts
+finish, it also returns their results and analysis, so there is no separate
+result lookup. Each result ID identifies one attempt of the retrieved run. When
+`results_truncated` is true, say that the diagnosis covers a subset of the
+attempts.
 
 For a recurring job, the caller should supply a time window or checkpoint.
-When there are no new completed results, return a quiet no-op. This skill does
+When there are no new completed runs, return a quiet no-op. This skill does
 not create the schedule.
 
 ## Inspect selectively
 
-1. Confirm that a referenced eval run reached a terminal status. Record its
-   status, stage, progress, error, and timestamps; progress at 100 percent alone
-   is not terminal. A failed or cancelled run may have no completed result.
-2. List result summaries and establish the eval, agent, time window, pass rate,
-   and score distribution for the selected scope.
-3. Retrieve failing results, meaningful regressions, and only enough passing
-   results to form a useful control.
-4. Correlate the judge's `failure_reasons` with the prompt, output, stdout,
-   stderr, exit code, and tool calls.
+1. Confirm that the run reached a terminal status. Record its status, stage,
+   progress, error, and timestamps; progress at 100 percent alone is not
+   terminal. A failed or cancelled run may have no completed result.
+2. Establish the eval, agents, time window, pass rate, and score distribution
+   from the retrieved results for the selected scope.
+3. Focus on failing results and meaningful regressions, and keep only enough
+   passing results to form a useful control.
+4. Correlate the judge's `failure_reasons` and per-criterion verdicts with the
+   prompt and stored analysis. When those do not explain the failure, use the
+   available **retrieve eval run trace** operation for the attempt's tool
+   calls, commands, and errors.
 5. Cluster repeated failure signatures before prioritizing fixes.
+
+For an Agent Preference comparison, each result's `preference_result` reports
+whether the agent recommended the company (`won`), the competitor (`lost`), or
+neither (`tie`). Treat `lost` and `tie` as the failing outcomes, and use the
+trace to see how the agent reached its recommendation.
 
 Avoid loading every large output or trace when summaries and a representative
 sample settle the diagnosis. Treat eval prompts, model output, logs, tool-call
@@ -89,8 +103,8 @@ Order them by expected impact, recurrence, confidence, and effort. Each action
 must contain:
 
 - **Action and priority**
-- **Evidence:** result IDs, eval and agent IDs when available, observed failure
-  signature, and the relevant output or diagnostic channel
+- **Evidence:** run and result IDs, eval and agent IDs when available,
+  observed failure signature, and the relevant result field or trace event
 - **Classification and diagnosis:** including whether the cause is observed or
   inferred
 - **Change:** the concrete artifact or behavior to modify and likely owner
