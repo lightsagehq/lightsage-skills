@@ -102,6 +102,19 @@ It also includes platform-specific plugin metadata:
 - A Lightsage account with access to a workspace
 - The Lightsage CLI installed and authenticated when using the `lightsage-cli` skill
 
+## Privacy and support
+
+The plugin connects to Lightsage's hosted MCP server and sends the tool
+arguments needed for the requested workspace operation. The server can read
+and change workspace data through the signed-in user's account. The two
+analysis skills read existing evidence; they do not start runs or change data
+unless the user asks. The CLI skill runs Lightsage CLI commands only when a
+terminal workflow is requested.
+
+See the [Lightsage Privacy Policy](https://lightsage.com/privacy) for data
+collection, usage, and retention. For setup help or product and security
+concerns, contact [support@lightsage.com](mailto:support@lightsage.com).
+
 ## License
 
 MIT
