@@ -22,5 +22,7 @@
     "visibility",
     "analytics",
     "mcp"
-  ]
+  ],
+  "icon": "assets/lightsage-icon.png",
+  "privacyPolicyUrl": "https://lightsage.com/privacy"
 }
