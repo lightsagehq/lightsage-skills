@@ -1,0 +1,453 @@
+{
+ "data": {
+  "viewer": {
+   "zones": [
+    {
+     "httpRequestsAdaptiveGroups": [
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/about",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/quickstart.md",
+        "userAgent": "Claude-User (claude-code/2.1.4; +https://support.anthropic.com/)",
+        "edgeResponseStatus": 404,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/authentication",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://www.google.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://www.perplexity.ai/search?q=x",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://www.google.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 3,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/docs",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/authentication",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/integrations/stripe",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/about",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/blog/agent-ready-docs",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.3; +https://openai.com/gptbot",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/docs/api-reference",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/docs/api-reference",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/blog/launch-week",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/about",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/api-reference",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://chatgpt.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/api-reference",
+        "userAgent": "curl/8.7.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/blog/agent-ready-docs",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/api-reference",
+        "userAgent": "Claude-User (claude-code/2.1.4; +https://support.anthropic.com/)",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs",
+        "userAgent": "Claude-User (claude-code/2.1.4; +https://support.anthropic.com/)",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/about",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://www.google.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",
+        "edgeResponseStatus": 403,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/authentication",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.3; +https://openai.com/gptbot",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/docs/quickstart",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/integrations/stripe",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",
+        "edgeResponseStatus": 403,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/_next/static/chunks/main.js",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://example.com/pricing",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/healthz",
+        "userAgent": "curl/8.7.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 2,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/api-reference",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "https://www.google.com/",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs/api-reference",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/docs",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",
+        "edgeResponseStatus": 403,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/pricing",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)",
+        "edgeResponseStatus": 429,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      },
+      {
+       "count": 1,
+       "dimensions": {
+        "date": "2026-11-02",
+        "clientRequestPath": "/about",
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot",
+        "edgeResponseStatus": 200,
+        "clientRequestReferer": "",
+        "clientRequestHTTPHost": "example.com"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "errors": null
+}

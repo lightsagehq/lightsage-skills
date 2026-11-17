@@ -1,0 +1,67 @@
+{
+  "skill": "measure-ai-visibility",
+  "trigger": {
+    "should_fire": [
+      "does chatgpt recommend us or our competitors? want real numbers not vibes",
+      "check our AI visibility across perplexity, claude and gemini for our main category",
+      "how often do AI answers mention acme vs postbird? we have an openai key",
+      "need a share of voice baseline in ai search before we start the geo project",
+      "which sites does perplexity cite when people ask for the best email api",
+      "my ceo keeps asking if we show up when people ask chatgpt for tools like ours. can you find out",
+      "we rewrote the pricing page last month, did anything change in what the AI assistants say about us",
+      "when people ask chatgpt or perplexity 'what should I use to send emails from node' do we even come up",
+      "I pasted 12 copilot answers below, how many of them name us and who else shows up",
+      "who's winning the 'best crm for small agencies' question in the chatbots right now"
+    ],
+    "should_not_fire": [
+      "chatgpt says our free tier is 100 emails, it's 5000. how do we get that corrected",
+      "we're losing every comparison prompt in lightsage, what should we change on the site",
+      "when claude code builds a signup flow does it install our sdk or stripe's",
+      "is our robots.txt blocking GPTBot or ClaudeBot?",
+      "which AI bots hit our docs last week according to the cloudflare logs",
+      "can coding agents finish the quickstart with our API and MCP server",
+      "set up weekly tracking of which coding agents pick us over the competitor across models",
+      "write a blog post about generative engine optimization",
+      "our lightsage eval run failed on step 3, why",
+      "review our MCP server before we submit it to the claude directory"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "do chatgpt and perplexity recommend us (acme mail, transactional email api)? competitors are postbird, sendly, mailcannon. OPENAI_API_KEY and PERPLEXITY_API_KEY are set",
+      "setup": "Empty working folder. OPENAI_API_KEY and PERPLEXITY_API_KEY exported. No claude or codex CLI. No Lightsage connection.",
+      "checks": [
+        "must write 15-40 unbranded prompts across category, problem, comparison and alternatives intents, plus at least one control prompt that names Acme Mail",
+        "must run scripts/run_prompts.py without --yes first and show the call count per engine and that the user's own keys pay, then wait for a yes",
+        "must plan at least 3 runs per prompt per engine",
+        "must report mention, recommendation and own-site citation as separate numbers, each as k/n with a range",
+        "must label the OpenAI results as the OpenAI API with web search and say they can differ from the ChatGPT app",
+        "must NOT ask the user to paste an API key into the chat or print a key",
+        "must NOT report a rate from a single run per prompt"
+      ]
+    },
+    {
+      "prompt": "here are answers i copied from chatgpt and copilot, how visible are we? brand is Acme Mail (acmemail.dev)",
+      "setup": "evals/fixtures/pasted.txt, evals/fixtures/prompts.csv and evals/fixtures/brands.json are in the working folder. No API keys, no agent CLIs.",
+      "checks": [
+        "must import the answers with scripts/tally.py import-paste and extract with scripts/tally.py extract",
+        "must say the sample is too small for a rate (3 answers, under 5 prompts) and give counts rather than percentages as findings",
+        "must name Postbird as appearing where Acme Mail does not (the copilot comparison answer)",
+        "must ask for at least 3 runs per prompt in new chats to make the result usable, using the paste template",
+        "must NOT claim a percentage visibility score for ChatGPT as a whole"
+      ]
+    },
+    {
+      "prompt": "build the report from the runs we already have, which prompts are we losing and which sites get cited",
+      "setup": "evals/fixtures/runs.jsonl (36 answers: 5 prompts plus a control, openai and perplexity, 3 runs each, one errored call later retried) and evals/fixtures/brands.json in the working folder.",
+      "checks": [
+        "must run scripts/tally.py extract and report rather than counting by hand",
+        "must list p02 (Postbird vs Sendly) as a gap prompt on both engines and p05 as a gap on perplexity",
+        "must name g2.com and reviewhub.example.com as the domains cited in the gap answers",
+        "must report openai brand named 8/15 and perplexity 4/15 with ranges, excluding the control prompt",
+        "must note the negative perplexity mention ('Avoid Acme Mail if you need dedicated IPs') after reading the answers",
+        "must NOT count the errored openai p03 run 2 call as an answer"
+      ]
+    }
+  ]
+}

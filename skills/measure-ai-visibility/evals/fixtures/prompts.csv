@@ -1,0 +1,7 @@
+id,intent,prompt
+p01,category,What are the best transactional email APIs for a small SaaS?
+p02,comparison,Postbird vs Sendly: which is better for password reset emails?
+p03,problem,Why do my signup emails land in spam?
+p04,alternatives,What are good alternatives to Postbird?
+c01,control,What is Acme Mail?
+p05,category,Which email API has the best free tier?

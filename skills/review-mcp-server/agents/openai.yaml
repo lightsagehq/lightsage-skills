@@ -1,0 +1,7 @@
+interface:
+  display_name: "Review MCP Server"
+  short_description: "Check an MCP server's tools against agent and directory rules"
+  default_prompt: "Use $review-mcp-server to review https://example.com/mcp and tell me what to fix before we submit it to the ChatGPT and Claude directories."
+
+policy:
+  allow_implicit_invocation: true

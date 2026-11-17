@@ -1,0 +1,7 @@
+interface:
+  display_name: "Test API on Agents"
+  short_description: "Can coding agents finish real tasks with your API?"
+  default_prompt: "Use $test-api-on-agents to check whether Claude Code and Codex can complete our quickstart tasks, and tell me where they get stuck."
+
+policy:
+  allow_implicit_invocation: true

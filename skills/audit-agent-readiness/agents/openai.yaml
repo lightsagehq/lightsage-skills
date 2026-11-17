@@ -1,0 +1,7 @@
+interface:
+  display_name: "Audit Agent Readiness"
+  short_description: "Fetch your site as each AI agent and rank what blocks them"
+  default_prompt: "Use $audit-agent-readiness to check whether ChatGPT, Claude, Perplexity and coding agents can reach and read https://example.com and its docs."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,16 @@
+Answers copied from the ChatGPT app, logged out, 2026-11-12.
+
+=== engine: chatgpt-app | run: 1 | prompt: What are the best transactional email APIs for a small SaaS? | logged_in: no
+Here are strong options:
+1. **Postbird** – reliable delivery
+2. **Acme Mail** – easiest setup
+Sources: https://www.g2.com/categories/transactional-email https://acmemail.dev/pricing
+
+=== engine: chatgpt-app | run: 2 | prompt: What are the best transactional email APIs for a small SaaS? | logged_in: no
+1. **Postbird**
+2. **Sendly**
+3. **Mailpace**
+Source: g2.com
+
+=== engine: copilot | run: 1 | prompt: Postbird vs Sendly: which is better for password reset emails?
+Postbird is the safer choice for password resets. [1] https://reviewhub.example.com/postbird-vs-sendly

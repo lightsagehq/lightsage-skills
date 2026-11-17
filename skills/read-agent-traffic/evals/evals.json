@@ -1,0 +1,64 @@
+{
+  "skill": "read-agent-traffic",
+  "trigger": {
+    "should_fire": [
+      "which AI bots are hitting our site? attached access.log.gz",
+      "analyze our vercel log drain for AI agent traffic",
+      "how much of our traffic is gptbot vs chatgpt-user vs actual people",
+      "parse this cloudflare logpush export and tell me which agents read /docs",
+      "show 404s and 403s served to AI crawlers from these nginx logs",
+      "is claude code or codex actually reading our docs? I can export logs from netlify",
+      "my boss thinks AI is scraping us to death, here's a week of server logs, is that true",
+      "how many visitors come to us from chatgpt and perplexity answers? we have the raw request logs",
+      "we flipped on bot protection last tuesday, did that cut off the AI assistants? csv export attached",
+      "what pages do the AI assistants open most when people ask about us"
+    ],
+    "should_not_fire": [
+      "can chatgpt and claude reach our site? check robots.txt and cloudflare",
+      "audit our site for agent readiness before launch",
+      "how often does perplexity cite us vs competitors",
+      "does codex pick our sdk or stripe's when asked to add payments",
+      "run our api quickstart on claude code 5 times and give me the pass rate",
+      "set up GA4 to track referrals from chatgpt",
+      "block GPTBot in our robots.txt",
+      "our nginx is returning 502s, help me debug the upstream config",
+      "review our MCP server's tool descriptions",
+      "write a blog post about AI crawler traffic trends"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "here's a week of nginx logs (scripts/fixtures/combined.log). which ai agents visit and where do they fail?",
+      "setup": "scripts/fixtures/combined.log: 7 days of synthetic combined-format logs with browsers, ChatGPT-User, OAI-SearchBot, GPTBot, ClaudeBot (403s), Claude-User (403s), Claude Code (404s on .md pages), PerplexityBot, Perplexity-User (429), curl on docs, Gemini CLI (404), Googlebot, Bingbot, a GPTBot user agent probing /.env, and human visits referred by chatgpt.com, perplexity.ai, claude.ai and utm_source=chatgpt.com.",
+      "checks": [
+        "must run scripts/analyze_logs.py on the file rather than eyeballing lines",
+        "must separate user-triggered fetches (ChatGPT-User, Claude-User, Perplexity-User) from search and training crawlers",
+        "must call out Claude-User 403s and Perplexity-User 429s as blocks that lose answers, and route the fix to audit-agent-readiness or the CDN",
+        "must report 404s to coding agents (/docs/quickstart.md, /docs/v2/quickstart) as pages to redirect or add",
+        "must treat the GPTBot requests to /.env and /wp-login.php as likely spoofed, not real GPTBot",
+        "must say user agents are declared unless IPs were checked",
+        "must report AI referrals from people with the caveat that it is a floor"
+      ]
+    },
+    {
+      "prompt": "vercel log drain dump attached (vercel-drain.json). are coding agents reading our docs?",
+      "setup": "scripts/fixtures/vercel-drain.json: a Vercel log drain JSON array with proxy.userAgent arrays, proxy.path, proxy.statusCode and proxy.clientIp.",
+      "checks": [
+        "must auto-detect the Vercel format and report the period and request counts",
+        "must explain that most coding agents fetch with curl or HTTP libraries and that unnamed coding-agent counts are an estimate on docs paths",
+        "must name Claude Code separately from Claude chat (Claude-User)",
+        "must NOT claim JS analytics would show the same traffic"
+      ]
+    },
+    {
+      "prompt": "we only have google analytics. can you tell me how much traffic AI agents send us?",
+      "setup": "No server or CDN logs provided; no Lightsage connection.",
+      "checks": [
+        "must explain that AI agents and crawlers mostly do not run JavaScript, so GA4 misses them",
+        "must point to where to export server or CDN logs for the user's host (references/log-sources.md)",
+        "may use GA4 only for human referrals from AI products, as a floor",
+        "must NOT invent agent traffic numbers"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "skill": "test-agent-pick",
+  "trigger": {
+    "should_fire": [
+      "does claude code recommend us or stripe when someone asks for a payments api?",
+      "test which vendor codex picks for 'add email sending to this app' - us or sendgrid",
+      "run an agent pick test for our vector db vs pinecone and weaviate",
+      "are coding agents picking our competitor? want pick share for claude code and codex",
+      "measure how often cursor/claude code chooses our sdk over the alternatives, no lightsage account",
+      "when devs tell claude code to add auth to a nextjs app, what does it install? we're an auth company",
+      "we changed our quickstart last week, did codex start choosing us more? before/after please",
+      "our devrel lead thinks AI coding tools never suggest us. can you check that properly",
+      "i want to know what codex reaches for when someone says 'add error tracking' and why",
+      "which search api do coding agents default to for a research agent, and do they ever pick ours?",
+      "when someone asks claude code or codex 'what should I use to send emails from node' do we even come up"
+    ],
+    "should_not_fire": [
+      "set up a weekly lightsage head-to-head of us vs stripe across 8 agents",
+      "how did our agent preference eval do this week in lightsage?",
+      "can claude code actually finish a task using our API? want a pass rate",
+      "review our MCP server before we submit it to the claude directory",
+      "how often does chatgpt mention us when people ask for the best email api?",
+      "which ai bots are crawling our docs, from our cloudflare logs",
+      "is our site readable by ai agents and crawlers? robots.txt, llms.txt etc",
+      "our lightsage eval runs failed overnight, what broke?",
+      "write a comparison page: us vs competitor a",
+      "pick the best coding agent for our team: claude code or codex?"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "does claude code pick us (Resend) or sendgrid when people ask it to add emails? just find out",
+      "setup": "Empty working folder. claude and codex CLIs installed and logged in. No Lightsage MCP server.",
+      "checks": [
+        "must confirm or state the category, competitors and stacks before writing tasks",
+        "must write unbranded tasks: no task text names Resend or SendGrid",
+        "must include both ask-style questions and build tasks with fixture repos",
+        "must run scripts/run_agents.py --dry-run and show the session count before running anything",
+        "must wait for the user's yes before running with --yes",
+        "must NOT run agents in the user's own repo or with their normal config"
+      ]
+    },
+    {
+      "prompt": "here's the output folder from yesterday's agent pick run (./agent-pick-2026-11-16), write it up for the team",
+      "setup": "Folder with tasks.json, runs/claude and runs/codex (3 runs x 20 tasks each), meta.json/answer.md/diff.txt per run, no judgments.json.",
+      "checks": [
+        "must run tally.py --sheet and judge runs before reporting, or clearly label picks as unjudged",
+        "must report pick share per agent as k/n with intervals",
+        "must report named, picked (sole/split) and installed separately",
+        "must give loss reasons with run ids and counts",
+        "must label page suggestions as hypotheses with a rerun test",
+        "must NOT claim agents 'prefer' a vendor without naming agent versions and n"
+      ]
+    },
+    {
+      "prompt": "we shipped a new nextjs guide on our docs. did it change what codex installs?",
+      "setup": "A prior run folder (before) exists with judged results; the guide is live; codex installed.",
+      "checks": [
+        "must rerun the same targeted tasks, agents and fixtures into a new folder after a dry-run and a yes",
+        "must check whether treatment runs fetched the new guide before attributing any change",
+        "must use tally.py --compare BEFORE AFTER and report the p-value",
+        "must judge before and after runs without telling the judge which is which",
+        "must NOT call it a win at p >= 0.05 or without a confirming rerun"
+      ]
+    }
+  ]
+}

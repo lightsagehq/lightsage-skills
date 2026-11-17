@@ -1,0 +1,30 @@
+Time (UTC),Request Path,Status,User Agent,Referrer,Client IP
+2026-11-02 00:04:10,/about,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36",,66.249.66.1
+2026-11-02 08:42:57,/docs,200,Claude-User (claude-code/2.1.4; +https://support.anthropic.com/),,192.0.2.10
+2026-11-02 15:47:18,/integrations/stripe,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",,203.0.113.6
+2026-11-02 21:19:08,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/blog/agent-ready-docs,203.0.113.37
+2026-11-03 05:04:11,/pricing,200,"Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",https://example.com/,203.0.113.60
+2026-11-03 10:05:31,/about,200,"Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",,203.0.113.45
+2026-11-03 16:40:52,/docs,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/,203.0.113.23
+2026-11-04 01:08:04,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/integrations/stripe,203.0.113.6
+2026-11-04 07:03:39,/docs/api-reference,200,Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/),,198.51.100.90
+2026-11-04 14:00:05,/docs/quickstart,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot",,198.51.100.21
+2026-11-04 19:13:07,/blog/agent-ready-docs,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.3; +https://openai.com/gptbot",,132.196.86.14
+2026-11-05 02:18:13,/,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://chatgpt.com/,203.0.113.31
+2026-11-05 08:07:51,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/docs/api-reference,203.0.113.58
+2026-11-05 13:36:44,/blog/launch-week,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://www.google.com/,203.0.113.59
+2026-11-05 18:21:45,/sitemap.xml,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36",,66.249.66.1
+2026-11-06 02:14:24,/docs/quickstart,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",,203.0.113.3
+2026-11-06 09:37:14,/_next/static/chunks/main.js,200,"Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",https://example.com/docs,203.0.113.26
+2026-11-06 15:02:36,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/docs,203.0.113.10
+2026-11-06 21:02:40,/docs/quickstart,200,Claude-User (claude-code/2.1.4; +https://support.anthropic.com/),,192.0.2.10
+2026-11-07 00:23:13,/_next/static/chunks/main.js,200,"Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1",https://example.com/about,203.0.113.50
+2026-11-07 05:15:38,/integrations/stripe,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://claude.ai/,203.0.113.49
+2026-11-07 10:31:39,/pricing,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",,104.208.184.200
+2026-11-07 15:58:06,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/docs/api-reference,203.0.113.48
+2026-11-07 21:03:43,/docs/api-reference,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/,203.0.113.7
+2026-11-08 01:28:34,/,200,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",,104.208.184.200
+2026-11-08 06:06:33,/about,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://www.google.com/,203.0.113.52
+2026-11-08 11:19:31,/_next/static/chunks/main.js,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://example.com/,203.0.113.25
+2026-11-08 16:04:13,/docs/authentication,200,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",https://www.google.com/,203.0.113.11
+2026-11-08 20:58:58,/blog/agent-ready-docs,403,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)",,216.73.216.40
