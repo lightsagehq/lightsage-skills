@@ -1,0 +1,64 @@
+{
+  "skill": "track-agent-pick",
+  "trigger": {
+    "should_fire": [
+      "are we winning against stripe on coding agents this week?",
+      "set up a lightsage agent preference eval: us vs competitor a on claude code, codex and cursor",
+      "pull our head-to-head numbers from lightsage and tell me what changed since last week",
+      "run the agent preference eval again and compare to last run",
+      "which agents in lightsage are recommending our competitor over us, and why?",
+      "did the docs change we shipped tuesday move our win rate vs acme in lightsage?",
+      "my boss wants a weekly number for 'do AI coding tools recommend us' - we have lightsage connected",
+      "codex seems to suggest sendgrid more lately. can you check our lightsage results",
+      "add gemini and grok agents to our existing head to head",
+      "what are the losing transcripts saying in our agent preference evals?"
+    ],
+    "should_not_fire": [
+      "quick test on my laptop: does claude code pick us or stripe? no account",
+      "why did our lightsage eval run for the API onboarding task fail?",
+      "how often does chatgpt cite our docs? lightsage prompt runs",
+      "set up tracked prompts for perplexity and chatgpt in lightsage",
+      "what does the lightsage CLI command for listing prompts look like?",
+      "audit our site for ai crawlers",
+      "is our mcp server well designed?",
+      "check our agent analytics: which bots hit /docs last week",
+      "create a lightsage eval that tests whether agents can complete our quickstart",
+      "compare claude code vs codex for our engineering team"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "are we winning vs acme mail on coding agents this week?",
+      "setup": "Lightsage MCP connected; one Agent Preference eval 'YourBrand vs Acme Mail' with 3 weeks of results across 4 agents.",
+      "checks": [
+        "must call status-auth-status-get and agent-preference-evals-list before anything else",
+        "must page through agent-preference-evals-results-list and summarize with scripts/summarize.py --period week",
+        "must report won/lost/tied with n and win rate per agent, this week vs last week, with a p-value",
+        "must treat null preference_result attempts as no-result, not losses",
+        "must NOT start a new run without stating the attempt count and getting a yes"
+      ]
+    },
+    {
+      "prompt": "set up a head to head of us vs sendgrid on claude code and codex and run it",
+      "setup": "Lightsage MCP connected; SendGrid is a tracked competitor; agents-list returns 6 agents; no existing evals.",
+      "checks": [
+        "must get competitor_id from agent-preference-competitors-list and agent IDs from agents-list",
+        "must draft unbranded prompts and show prompts, agents, runs (>= 3) and the attempt count",
+        "must say the run uses usage-based credits and wait for a yes before evals-run",
+        "must poll evals-get until a terminal status",
+        "must NOT describe pricing beyond usage-based credits"
+      ]
+    },
+    {
+      "prompt": "we keep losing to competitor a on codex. what should we change on our docs?",
+      "setup": "Lightsage MCP connected; Agent Preference eval with 2 finished runs; Codex lost 20 of 30.",
+      "checks": [
+        "must read losing attempts via evals-get analysis/tool_calls (and evals-trace when needed) and give reasons with counts",
+        "must assign loss codes and separate unfixable losses (never looked, no product) from page-fixable ones",
+        "must propose at most 3 changes, each tied to a page losing attempts read",
+        "must frame each change as a control vs treatment rerun with a success threshold",
+        "must NOT recommend naming the competitor on the page or telling agents to prefer the brand"
+      ]
+    }
+  ]
+}

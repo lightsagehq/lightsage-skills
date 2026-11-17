@@ -1,0 +1,670 @@
+[
+ {
+  "id": "run-001",
+  "prompt_id": "pr1",
+  "prompt": {
+   "id": "pr1",
+   "text": "What are the best transactional email APIs for a small SaaS?",
+   "topic": {
+    "id": "t-Email APIs",
+    "name": "Email APIs"
+   }
+  },
+  "platform": {
+   "id": "pl-ChatGPT",
+   "name": "ChatGPT"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-03",
+  "response_preview": "Postbird is the most reliable choice. Sendly is cheapest.",
+  "is_brand_mentioned": false,
+  "citation_count": 2,
+  "response": "Postbird is the most reliable choice. Sendly is cheapest.",
+  "mentions": [
+   {
+    "id": "m-Postbird-1",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Postbird is the most reliable choice.",
+    "sentiment": "neutral"
+   },
+   {
+    "id": "m-Sendly-2",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 2,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Sendly is cheapest.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c512410",
+    "url": "https://www.g2.com/categories/transactional-email",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c832192",
+    "url": "https://devblog.example.org/best-email-apis-2026",
+    "domain": "devblog.example.org",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-002",
+  "prompt_id": "pr1",
+  "prompt": {
+   "id": "pr1",
+   "text": "What are the best transactional email APIs for a small SaaS?",
+   "topic": {
+    "id": "t-Email APIs",
+    "name": "Email APIs"
+   }
+  },
+  "platform": {
+   "id": "pl-Perplexity",
+   "name": "Perplexity"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-03",
+  "response_preview": "Acme Mail has the cleanest API. Postbird for deliverability.",
+  "is_brand_mentioned": true,
+  "citation_count": 2,
+  "response": "Acme Mail has the cleanest API. Postbird for deliverability.",
+  "mentions": [
+   {
+    "id": "m-Acme Mail-1",
+    "brand": {
+     "id": "b-Acme Mail",
+     "name": "Acme Mail",
+     "domain": "acmemail.dev"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": true,
+    "quote": "Acme Mail has the cleanest API.",
+    "sentiment": "positive"
+   },
+   {
+    "id": "m-Postbird-2",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 2,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Postbird for deliverability.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c173649",
+    "url": "https://acmemail.dev/docs",
+    "domain": "acmemail.dev",
+    "title": null,
+    "is_company_link": true,
+    "position": 1
+   },
+   {
+    "id": "c512410",
+    "url": "https://www.g2.com/categories/transactional-email",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-003",
+  "prompt_id": "pr2",
+  "prompt": {
+   "id": "pr2",
+   "text": "Postbird vs Sendly for password reset emails",
+   "topic": {
+    "id": "t-Comparisons",
+    "name": "Comparisons"
+   }
+  },
+  "platform": {
+   "id": "pl-ChatGPT",
+   "name": "ChatGPT"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-03",
+  "response_preview": "Pick Postbird for resets. Sendly is fine.",
+  "is_brand_mentioned": false,
+  "citation_count": 2,
+  "response": "Pick Postbird for resets. Sendly is fine.",
+  "mentions": [
+   {
+    "id": "m-Postbird-1",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Pick Postbird for resets.",
+    "sentiment": "neutral"
+   },
+   {
+    "id": "m-Sendly-2",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 2,
+    "is_recommended": false,
+    "is_primary": false,
+    "quote": "Sendly is fine.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c964194",
+    "url": "https://reviewhub.example.com/postbird-vs-sendly",
+    "domain": "reviewhub.example.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c263132",
+    "url": "https://www.g2.com/compare/postbird-vs-sendly",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-004",
+  "prompt_id": "pr3",
+  "prompt": {
+   "id": "pr3",
+   "text": "Which email API has the best free tier?",
+   "topic": {
+    "id": "t-Pricing",
+    "name": "Pricing"
+   }
+  },
+  "platform": {
+   "id": "pl-Gemini",
+   "name": "Gemini"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-03",
+  "response_preview": "Sendly gives 3,000 free emails. Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+  "is_brand_mentioned": true,
+  "citation_count": 2,
+  "response": "Sendly gives 3,000 free emails. Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+  "mentions": [
+   {
+    "id": "m-Acme Mail-2",
+    "brand": {
+     "id": "b-Acme Mail",
+     "name": "Acme Mail",
+     "domain": "acmemail.dev"
+    },
+    "position": 2,
+    "is_recommended": false,
+    "is_primary": false,
+    "quote": "Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+    "sentiment": "negative"
+   },
+   {
+    "id": "m-Sendly-1",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Sendly gives 3,000 free emails.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c813573",
+    "url": "https://pricingwatch.example.com/email-free-tiers",
+    "domain": "pricingwatch.example.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c147765",
+    "url": "https://acmemail.dev/pricing",
+    "domain": "acmemail.dev",
+    "title": null,
+    "is_company_link": true,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-005",
+  "prompt_id": "pr4",
+  "prompt": {
+   "id": "pr4",
+   "text": "How do I send email from a Next.js app?",
+   "topic": {
+    "id": "t-Developer how-to",
+    "name": "Developer how-to"
+   }
+  },
+  "platform": {
+   "id": "pl-Claude Code",
+   "name": "Claude Code"
+  },
+  "target_kind": "coding_agent",
+  "agent": "claude-code:claude-opus-5-5",
+  "harness": "claude-code",
+  "model_id": "claude-opus-5-5",
+  "run_date": "2026-11-03",
+  "response_preview": "I'd use the Sendly SDK: npm i sendly.",
+  "is_brand_mentioned": false,
+  "citation_count": 1,
+  "response": "I'd use the Sendly SDK: npm i sendly.",
+  "mentions": [
+   {
+    "id": "m-Sendly-1",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "I'd use the Sendly SDK.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c134617",
+    "url": "https://sendly.com/docs/nextjs",
+    "domain": "sendly.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-006",
+  "prompt_id": "pr1",
+  "prompt": {
+   "id": "pr1",
+   "text": "What are the best transactional email APIs for a small SaaS?",
+   "topic": {
+    "id": "t-Email APIs",
+    "name": "Email APIs"
+   }
+  },
+  "platform": {
+   "id": "pl-ChatGPT",
+   "name": "ChatGPT"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-10",
+  "response_preview": "Postbird is the most reliable choice. Sendly is cheapest.",
+  "is_brand_mentioned": false,
+  "citation_count": 2,
+  "response": "Postbird is the most reliable choice. Sendly is cheapest.",
+  "mentions": [
+   {
+    "id": "m-Postbird-1",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Postbird is the most reliable choice.",
+    "sentiment": "neutral"
+   },
+   {
+    "id": "m-Sendly-2",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 2,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Sendly is cheapest.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c512410",
+    "url": "https://www.g2.com/categories/transactional-email",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c832192",
+    "url": "https://devblog.example.org/best-email-apis-2026",
+    "domain": "devblog.example.org",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-007",
+  "prompt_id": "pr1",
+  "prompt": {
+   "id": "pr1",
+   "text": "What are the best transactional email APIs for a small SaaS?",
+   "topic": {
+    "id": "t-Email APIs",
+    "name": "Email APIs"
+   }
+  },
+  "platform": {
+   "id": "pl-Perplexity",
+   "name": "Perplexity"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-10",
+  "response_preview": "Acme Mail has the cleanest API. Postbird for deliverability.",
+  "is_brand_mentioned": true,
+  "citation_count": 2,
+  "response": "Acme Mail has the cleanest API. Postbird for deliverability.",
+  "mentions": [
+   {
+    "id": "m-Acme Mail-1",
+    "brand": {
+     "id": "b-Acme Mail",
+     "name": "Acme Mail",
+     "domain": "acmemail.dev"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": true,
+    "quote": "Acme Mail has the cleanest API.",
+    "sentiment": "positive"
+   },
+   {
+    "id": "m-Postbird-2",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 2,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Postbird for deliverability.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c173649",
+    "url": "https://acmemail.dev/docs",
+    "domain": "acmemail.dev",
+    "title": null,
+    "is_company_link": true,
+    "position": 1
+   },
+   {
+    "id": "c512410",
+    "url": "https://www.g2.com/categories/transactional-email",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-008",
+  "prompt_id": "pr2",
+  "prompt": {
+   "id": "pr2",
+   "text": "Postbird vs Sendly for password reset emails",
+   "topic": {
+    "id": "t-Comparisons",
+    "name": "Comparisons"
+   }
+  },
+  "platform": {
+   "id": "pl-ChatGPT",
+   "name": "ChatGPT"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-10",
+  "response_preview": "Pick Postbird for resets. Sendly is fine.",
+  "is_brand_mentioned": false,
+  "citation_count": 2,
+  "response": "Pick Postbird for resets. Sendly is fine.",
+  "mentions": [
+   {
+    "id": "m-Postbird-1",
+    "brand": {
+     "id": "b-Postbird",
+     "name": "Postbird",
+     "domain": "postbird.io"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Pick Postbird for resets.",
+    "sentiment": "neutral"
+   },
+   {
+    "id": "m-Sendly-2",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 2,
+    "is_recommended": false,
+    "is_primary": false,
+    "quote": "Sendly is fine.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c964194",
+    "url": "https://reviewhub.example.com/postbird-vs-sendly",
+    "domain": "reviewhub.example.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c263132",
+    "url": "https://www.g2.com/compare/postbird-vs-sendly",
+    "domain": "g2.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-009",
+  "prompt_id": "pr3",
+  "prompt": {
+   "id": "pr3",
+   "text": "Which email API has the best free tier?",
+   "topic": {
+    "id": "t-Pricing",
+    "name": "Pricing"
+   }
+  },
+  "platform": {
+   "id": "pl-Gemini",
+   "name": "Gemini"
+  },
+  "target_kind": "answer_engine",
+  "agent": null,
+  "harness": null,
+  "model_id": null,
+  "run_date": "2026-11-10",
+  "response_preview": "Sendly gives 3,000 free emails. Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+  "is_brand_mentioned": true,
+  "citation_count": 2,
+  "response": "Sendly gives 3,000 free emails. Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+  "mentions": [
+   {
+    "id": "m-Acme Mail-2",
+    "brand": {
+     "id": "b-Acme Mail",
+     "name": "Acme Mail",
+     "domain": "acmemail.dev"
+    },
+    "position": 2,
+    "is_recommended": false,
+    "is_primary": false,
+    "quote": "Acme Mail's free tier is only 100 emails a day, and it lacks webhooks.",
+    "sentiment": "negative"
+   },
+   {
+    "id": "m-Sendly-1",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "Sendly gives 3,000 free emails.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c813573",
+    "url": "https://pricingwatch.example.com/email-free-tiers",
+    "domain": "pricingwatch.example.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   },
+   {
+    "id": "c147765",
+    "url": "https://acmemail.dev/pricing",
+    "domain": "acmemail.dev",
+    "title": null,
+    "is_company_link": true,
+    "position": 1
+   }
+  ]
+ },
+ {
+  "id": "run-010",
+  "prompt_id": "pr4",
+  "prompt": {
+   "id": "pr4",
+   "text": "How do I send email from a Next.js app?",
+   "topic": {
+    "id": "t-Developer how-to",
+    "name": "Developer how-to"
+   }
+  },
+  "platform": {
+   "id": "pl-Claude Code",
+   "name": "Claude Code"
+  },
+  "target_kind": "coding_agent",
+  "agent": "claude-code:claude-opus-5-5",
+  "harness": "claude-code",
+  "model_id": "claude-opus-5-5",
+  "run_date": "2026-11-10",
+  "response_preview": "I'd use the Sendly SDK: npm i sendly.",
+  "is_brand_mentioned": false,
+  "citation_count": 1,
+  "response": "I'd use the Sendly SDK: npm i sendly.",
+  "mentions": [
+   {
+    "id": "m-Sendly-1",
+    "brand": {
+     "id": "b-Sendly",
+     "name": "Sendly",
+     "domain": "sendly.com"
+    },
+    "position": 1,
+    "is_recommended": true,
+    "is_primary": false,
+    "quote": "I'd use the Sendly SDK.",
+    "sentiment": "neutral"
+   }
+  ],
+  "citations": [
+   {
+    "id": "c134617",
+    "url": "https://sendly.com/docs/nextjs",
+    "domain": "sendly.com",
+    "title": null,
+    "is_company_link": false,
+    "position": 1
+   }
+  ]
+ }
+]

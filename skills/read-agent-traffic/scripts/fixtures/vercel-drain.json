@@ -1,0 +1,698 @@
+[
+ {
+  "id": "r0",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/about",
+  "timestamp": 1793577850000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793577850000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/about",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "66.249.66.1",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r1",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs",
+  "timestamp": 1793608977000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793608977000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs",
+   "userAgent": [
+    "Claude-User (claude-code/2.1.4; +https://support.anthropic.com/)"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "192.0.2.10",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r2",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/integrations/stripe",
+  "timestamp": 1793634438000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793634438000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/integrations/stripe",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "203.0.113.6",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r3",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1793654348000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793654348000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/blog/agent-ready-docs",
+   "statusCode": 200,
+   "clientIp": "203.0.113.37",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r4",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/pricing",
+  "timestamp": 1793682251000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793682251000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/pricing",
+   "userAgent": [
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1"
+   ],
+   "referer": "https://example.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.60",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r5",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/about",
+  "timestamp": 1793700331000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793700331000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/about",
+   "userAgent": [
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "203.0.113.45",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r6",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs",
+  "timestamp": 1793724052000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793724052000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.23",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r7",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1793754484000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793754484000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/integrations/stripe",
+   "statusCode": 200,
+   "clientIp": "203.0.113.6",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r8",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/api-reference",
+  "timestamp": 1793775819000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793775819000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/api-reference",
+   "userAgent": [
+    "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "198.51.100.90",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r9",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/quickstart",
+  "timestamp": 1793800805000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793800805000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/quickstart",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "198.51.100.21",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r10",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/blog/agent-ready-docs",
+  "timestamp": 1793819587000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793819587000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/blog/agent-ready-docs",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.3; +https://openai.com/gptbot"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "132.196.86.14",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r11",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/",
+  "timestamp": 1793845093000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793845093000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://chatgpt.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.31",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r12",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1793866071000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793866071000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/docs/api-reference",
+   "statusCode": 200,
+   "clientIp": "203.0.113.58",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r13",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/blog/launch-week",
+  "timestamp": 1793885804000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793885804000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/blog/launch-week",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://www.google.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.59",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r14",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/sitemap.xml",
+  "timestamp": 1793902905000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793902905000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/sitemap.xml",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "66.249.66.1",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r15",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/quickstart",
+  "timestamp": 1793931264000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793931264000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/quickstart",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "203.0.113.3",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r16",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1793957834000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793957834000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1"
+   ],
+   "referer": "https://example.com/docs",
+   "statusCode": 200,
+   "clientIp": "203.0.113.26",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r17",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1793977356000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793977356000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/docs",
+   "statusCode": 200,
+   "clientIp": "203.0.113.10",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r18",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/quickstart",
+  "timestamp": 1793998960000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1793998960000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/quickstart",
+   "userAgent": [
+    "Claude-User (claude-code/2.1.4; +https://support.anthropic.com/)"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "192.0.2.10",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r19",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1794010993000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794010993000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1"
+   ],
+   "referer": "https://example.com/about",
+   "statusCode": 200,
+   "clientIp": "203.0.113.50",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r20",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/integrations/stripe",
+  "timestamp": 1794028538000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794028538000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/integrations/stripe",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://claude.ai/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.49",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r21",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/pricing",
+  "timestamp": 1794047499000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794047499000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/pricing",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "104.208.184.200",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r22",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1794067086000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794067086000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/docs/api-reference",
+   "statusCode": 200,
+   "clientIp": "203.0.113.48",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r23",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/api-reference",
+  "timestamp": 1794085423000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794085423000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/api-reference",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.7",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r24",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/",
+  "timestamp": 1794101314000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794101314000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot"
+   ],
+   "referer": "",
+   "statusCode": 200,
+   "clientIp": "104.208.184.200",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r25",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/about",
+  "timestamp": 1794117993000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794117993000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/about",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://www.google.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.52",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r26",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/_next/static/chunks/main.js",
+  "timestamp": 1794136771000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794136771000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/_next/static/chunks/main.js",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://example.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.25",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r27",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/docs/authentication",
+  "timestamp": 1794153853000,
+  "statusCode": 200,
+  "proxy": {
+   "timestamp": 1794153853000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/docs/authentication",
+   "userAgent": [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+   ],
+   "referer": "https://www.google.com/",
+   "statusCode": 200,
+   "clientIp": "203.0.113.11",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ },
+ {
+  "id": "r28",
+  "deploymentId": "dpl_test",
+  "source": "edge",
+  "host": "example.com",
+  "path": "/blog/agent-ready-docs",
+  "timestamp": 1794171538000,
+  "statusCode": 403,
+  "proxy": {
+   "timestamp": 1794171538000,
+   "method": "GET",
+   "host": "example.com",
+   "path": "/blog/agent-ready-docs",
+   "userAgent": [
+    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)"
+   ],
+   "referer": "",
+   "statusCode": 403,
+   "clientIp": "216.73.216.40",
+   "region": "iad1",
+   "scheme": "https",
+   "vercelCache": "HIT"
+  }
+ }
+]

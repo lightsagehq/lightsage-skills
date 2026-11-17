@@ -1,0 +1,68 @@
+{
+  "skill": "test-api-on-agents",
+  "trigger": {
+    "should_fire": [
+      "can claude code actually use our api? want a real test not vibes",
+      "test our MCP server on codex and claude code, how often do they finish the task",
+      "run our quickstart through coding agents 5 times each and give me a pass rate",
+      "does our python sdk work for agents? they keep calling methods that dont exist",
+      "set up an agent test for our CLI - deploy a site, check it worked",
+      "devs keep telling us cursor/claude mess up our auth setup, can we measure that",
+      "before we launch v2 i want to know if agents can integrate it from the docs alone",
+      "why do AI coding assistants keep using our old endpoints?? need proof + fixes",
+      "how many of our top 10 integration jobs can an agent do unattended",
+      "our onboarding is fine for humans but idk about agents. can you check"
+    ],
+    "should_not_fire": [
+      "when someone asks claude code to add payments, does it pick us or stripe?",
+      "is our docs site blocked for GPTBot and ClaudeBot? check robots.txt",
+      "review our MCP server tool names and descriptions before we submit to the claude directory",
+      "my lightsage eval failed last night, what went wrong",
+      "how often does chatgpt mention us when people ask for the best email api",
+      "which AI bots hit our site last week? i have cloudflare logs",
+      "write unit tests for our api client",
+      "set up a weekly lightsage agent preference eval against our top competitor",
+      "chatgpt says we don't support webhooks, how do we fix that answer",
+      "use the lightsage cli to list my eval runs in CI"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "can claude code and codex use our api? docs at docs.acme.dev, test key is ACME_TEST_KEY in my shell",
+      "setup": "Empty project folder. claude and codex CLIs installed and logged in. ACME_TEST_KEY exported. No Lightsage connection.",
+      "checks": [
+        "must propose 5-15 one-line developer tasks without step lists, doc links or SDK method names",
+        "must define a check per task that verifies real state (API query, running the code, tests), not the agent's final message",
+        "must run scripts/run_tasks.py with --dry-run and show the session count before any agent session starts",
+        "must wait for the user's yes before running with --yes",
+        "must plan at least 3 runs per task per agent",
+        "must warn that agents can read and use ACME_TEST_KEY and suggest a narrow test key",
+        "must NOT print, echo or write the value of ACME_TEST_KEY",
+        "must NOT start Lightsage eval runs"
+      ]
+    },
+    {
+      "prompt": "ok here's the run folder agent-test-runs/acme-20261117-101500, what's breaking and what should we fix first",
+      "setup": "Run folder from run_tasks.py: 6 tasks x claude,codex x 3 runs with meta.json, events.jsonl and check.json per attempt; 9 of 36 attempts failed, 6 of them fetch https://docs.acme.dev/v1/quickstart which 404s; 2 attempts are harness errors (codex not logged in).",
+      "checks": [
+        "must run scripts/tally.py on the folder rather than hand-counting",
+        "must report pass rate per task x agent as k/n with the interval, excluding the 2 harness errors and saying so",
+        "must read events.jsonl of failed attempts and quote the evidence for each stall point",
+        "must rank the 404 quickstart URL fix first because it explains the most failed attempts",
+        "must give each fix a verification plan using the same tasks, agents and runs",
+        "must NOT count the codex login errors as product failures"
+      ]
+    },
+    {
+      "prompt": "just run it once on claude to see if our mcp server works, dont need the full thing",
+      "setup": "Suite file with 4 tasks and an mcp_servers entry using bearer_env ACME_TOKEN. claude installed. Lightsage MCP server connected (status-auth-status-get succeeds).",
+      "checks": [
+        "must show the dry-run plan (4 sessions) and get a yes before running",
+        "must label a 1-run result as a smoke test, not a pass rate, and say 3+ runs are needed for a rate",
+        "must keep the token out of saved files and chat",
+        "may mention Lightsage evals as the hosted option, naming agents-list, evals-create and evals-run, and say runs use usage-based credits",
+        "must NOT start a Lightsage eval run without an explicit yes"
+      ]
+    }
+  ]
+}

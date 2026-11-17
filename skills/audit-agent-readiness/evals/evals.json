@@ -1,0 +1,65 @@
+{
+  "skill": "audit-agent-readiness",
+  "trigger": {
+    "should_fire": [
+      "can chatgpt and claude actually read our site? acme.dev",
+      "check if we're blocking AI crawlers anywhere, robots or cloudflare",
+      "run an agent readiness audit on our docs at docs.acme.dev",
+      "is our site AI friendly? perplexity, gptbot, claudebot etc",
+      "does our robots.txt let OAI-SearchBot and PerplexityBot in? also check llms.txt",
+      "chatgpt says it can't open our pricing page when people paste the link. why",
+      "devs tell me claude code keeps failing to read our api reference, can you figure out what it sees",
+      "we moved to cloudflare last month and I'm scared we're invisible to AI search now",
+      "our marketing site is a react SPA, is that a problem for AI assistants",
+      "before launch week, make sure codex and cursor can actually get through our docs"
+    ],
+    "should_not_fire": [
+      "how many GPTBot hits did we get last week? I have the nginx logs",
+      "parse this cloudflare logpush export and show which bots hit /docs",
+      "how often does chatgpt recommend us vs postbird for email apis",
+      "track whether claude code picks our sdk or a competitor's for 'add payments'",
+      "can coding agents finish the quickstart with our api? want a pass rate",
+      "review our MCP server before we submit to the claude directory",
+      "do a classic SEO audit: core web vitals, backlinks, keyword gaps",
+      "write an llms.txt file for our repo",
+      "why did our eval run fail last night in lightsage",
+      "fix the wrong pricing claim perplexity keeps making about us"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "can chatgpt, claude and perplexity read lightsage.com? check docs too",
+      "setup": "Network access; no Lightsage connection. The site serves HTML to all agents, negotiates markdown on Accept: text/markdown, has a sitemap and llms.txt.",
+      "checks": [
+        "must run scripts/fetch_matrix.py (or equivalent real fetches) rather than answer from a checklist",
+        "must cite evidence per finding: URL, user agent and status code or robots.txt rule",
+        "must give a verdict separately for answer engines and for coding agents",
+        "must say that results came from this machine's IP and real-bot behaviour should be confirmed in logs",
+        "must NOT recommend adding meta keywords, ai.txt or AI meta tags",
+        "must NOT claim llms.txt improves ChatGPT or Perplexity ranking"
+      ]
+    },
+    {
+      "prompt": "we block GPTBot and ClaudeBot on purpose (training). is anything else blocking AI? site is news-site.example",
+      "setup": "Site whose robots.txt disallows GPTBot, ClaudeBot and also OAI-SearchBot, ChatGPT-User and PerplexityBot; the CDN returns 403 to any user agent containing ChatGPT-User or Claude-User while curl gets 200.",
+      "checks": [
+        "must treat the GPTBot/ClaudeBot blocks as a deliberate business choice, not a P0",
+        "must flag the OAI-SearchBot / ChatGPT-User / PerplexityBot robots.txt rules as removing the site from AI answers and citations",
+        "must identify the 403s as an edge (CDN/WAF) user-agent rule, separate from robots.txt, and note it also blocks Claude Code",
+        "must rank fixes and name who owns each (robots.txt vs CDN dashboard)",
+        "must NOT tell the user to remove their training opt-out"
+      ]
+    },
+    {
+      "prompt": "our docs are on docs.acme.dev (client-side rendered). why do coding agents keep hallucinating our API?",
+      "setup": "Docs return under 200 characters of text without JavaScript; no markdown negotiation, no .md pages, no llms.txt; API reference is an interactive client-rendered page.",
+      "checks": [
+        "must fetch the docs as curl and as Claude Code and report the near-empty HTML with evidence",
+        "must recommend server rendering or prerendering plus markdown on Accept: text/markdown with Vary: Accept",
+        "must check the API reference and an OpenAPI or markdown alternative",
+        "must NOT recommend serving markdown by user agent",
+        "should offer a real coding-agent check only after stating it uses agent sessions and asking first"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill": "review-mcp-server",
+  "trigger": {
+    "should_fire": [
+      "can you review our mcp server? https://mcp.acme.dev/mcp",
+      "is our MCP server ready to submit to the claude connectors directory",
+      "audit the tool annotations on our mcp, we keep getting flagged",
+      "how should we split and name the tools in our MCP server",
+      "openai rejected our plugin, says tool hints don't match behavior. what do we fix",
+      "claude keeps calling the wrong tool from our connector, why",
+      "we have like 90 tools in our server, is that too many for gemini",
+      "before we launch the chatgpt app can you sanity check the tools list",
+      "our api has 300 endpoints, do we expose all of them to agents or what",
+      "devs say chatgpt asks for confirmation on every single call to our app, even reads"
+    ],
+    "should_not_fire": [
+      "can claude code actually build a working integration with our API? run it a few times",
+      "does codex recommend us or stripe when someone asks to add payments",
+      "set up an mcp server for postgres in my claude code config",
+      "write me an MCP server in typescript that wraps our REST API",
+      "how often does chatgpt mention us vs competitors",
+      "can AI crawlers read our docs site? check robots.txt",
+      "which AI bots hit our docs last week, here are the cloudflare logs",
+      "why did my lightsage eval run fail on the MCP task",
+      "add the lightsage MCP server to cursor",
+      "list the prompts in my lightsage workspace from the terminal"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "review https://mcp.deepwiki.com/mcp for the claude and chatgpt directories",
+      "setup": "Network access; the server lists tools without auth. No Lightsage connection.",
+      "checks": [
+        "must run scripts/inspect_mcp.py against the URL (initialize + tools/list only) rather than reading a listing page",
+        "must report each of the six criteria as pass, fail or not measured with evidence",
+        "must flag the missing readOnlyHint/destructiveHint/openWorldHint as a directory blocker and give the concrete annotation fix per tool",
+        "must mark result size and selection criteria 'not measured' unless it was allowed to call tools or run prompts",
+        "must NOT send tools/call to the server",
+        "must NOT require a Lightsage account to finish the review"
+      ]
+    },
+    {
+      "prompt": "here's our tools list (tools.json). we want to get into gemini and chatgpt. be harsh",
+      "setup": "tools.json with 52 tools generated 1:1 from an OpenAPI spec: empty annotations.title on every tool, descriptions that include 'Poll GET /v2/jobs/{id}', one `execute_request(method, path, body)` tool, a `start_export` tool marked readOnlyHint true, and a delete_* tool with destructiveHint false.",
+      "checks": [
+        "must call out the generic executor as barred by OpenAI, Google and Claude and propose splitting it into per-operation tools",
+        "must treat empty titles as missing",
+        "must say start_export is not read-only under OpenAI's rules and the delete tool needs destructiveHint true",
+        "must flag the REST paths in descriptions and the 1:1 REST mapping, and propose grouping into job-level tools",
+        "must say Google flags 'dozens of tools' without giving a number, and NOT present 10-20 tools as an official limit",
+        "must end with the top 3 fixes ranked"
+      ]
+    },
+    {
+      "prompt": "check https://mcp.acme-internal.dev/mcp before we submit to claude, our oauth keeps failing in claude.ai",
+      "setup": "The server returns 401 with WWW-Authenticate pointing at protected resource metadata whose 'resource' has a trailing slash the user's URL lacks; the authorization server advertises no code_challenge_methods_supported. No token is provided.",
+      "checks": [
+        "must run the script, handle the 401 without failing, and report the OAuth discovery checks",
+        "must identify the resource mismatch and the missing S256 PKCE advertisement as likely causes",
+        "must ask for a token via an environment variable (--token-env) to review the tool surface, and NOT ask the user to paste the token in chat",
+        "must mark tool-surface criteria as not measured or read from docs until tools can be listed"
+      ]
+    }
+  ]
+}

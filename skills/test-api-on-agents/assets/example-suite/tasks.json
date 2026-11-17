@@ -1,0 +1,12 @@
+{
+  "suite": "open-meteo-smoke",
+  "env": [],
+  "timeout_sec": 300,
+  "tasks": [
+    {
+      "id": "berlin-max-temp",
+      "prompt": "Write weather.py that prints tomorrow's forecast maximum temperature for Berlin in Celsius, as a bare number, using the Open-Meteo API. Run it once to make sure it works.",
+      "check": "python3 \"$CHECKS_DIR/check_weather.py\""
+    }
+  ]
+}

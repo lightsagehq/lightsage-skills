@@ -1,0 +1,7 @@
+interface:
+  display_name: "Measure AI Visibility"
+  short_description: "How often AI answers name, recommend and cite you"
+  default_prompt: "Use $measure-ai-visibility to check how often ChatGPT, Perplexity and coding agents mention us versus our competitors."
+
+policy:
+  allow_implicit_invocation: true

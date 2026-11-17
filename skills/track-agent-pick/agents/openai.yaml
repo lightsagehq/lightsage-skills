@@ -1,0 +1,4 @@
+interface:
+  display_name: "Track agent pick"
+  short_description: "Lightsage head-to-heads: do coding agents recommend us over competitors?"
+  default_prompt: "Use $track-agent-pick to show how we did against our competitors on coding agents this week."

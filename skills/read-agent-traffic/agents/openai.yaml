@@ -1,0 +1,7 @@
+interface:
+  display_name: "Read Agent Traffic"
+  short_description: "Which AI agents and bots hit your site, what they read, where they fail"
+  default_prompt: "Use $read-agent-traffic on ./access.log to show which AI agents and bots visit our site, what they read and which errors they get."
+
+policy:
+  allow_implicit_invocation: true

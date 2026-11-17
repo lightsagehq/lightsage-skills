@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test agent pick"
+  short_description: "Which vendor do coding agents pick for unbranded tasks?"
+  default_prompt: "Use $test-agent-pick to check whether Claude Code and Codex recommend us or our competitors."

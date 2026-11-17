@@ -1,0 +1,36 @@
+{
+ "brand": {
+  "name": "Acme Mail",
+  "aliases": [
+   "AcmeMail"
+  ],
+  "domains": [
+   "acmemail.dev"
+  ]
+ },
+ "competitors": [
+  {
+   "name": "Postbird",
+   "aliases": [],
+   "domains": [
+    "postbird.io"
+   ]
+  },
+  {
+   "name": "Sendly",
+   "aliases": [],
+   "domains": [
+    "sendly.com"
+   ]
+  },
+  {
+   "name": "MailCannon",
+   "aliases": [
+    "Mail Cannon"
+   ],
+   "domains": [
+    "mailcannon.net"
+   ]
+  }
+ ]
+}

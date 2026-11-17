@@ -1,0 +1,62 @@
+{
+  "skill": "lightsage-cli",
+  "trigger": {
+    "should_fire": [
+      "use the lightsage cli to list our tracked prompts",
+      "lightsage: command not found, how do i install it",
+      "write a github action step that runs our lightsage eval on every PR",
+      "lightsage auth keeps failing in CI, whoami says unset",
+      "what's the lightsage command to cancel an eval run",
+      "can you script a weekly export of our visibility numbers to a json file",
+      "cron job that pulls yesterday's plugin eval results zip every morning",
+      "from my terminal, add 5 new prompts to the 'payments' topic",
+      "need a bash one-liner to get the status of eval run 7f3c...",
+      "pipe our open tasks into jq so i can filter the high priority ones"
+    ],
+    "should_not_fire": [
+      "why did our eval fail on the webhook task, what should we fix",
+      "chatgpt says we don't support webhooks, how do we fix that answer",
+      "does claude code pick us or stripe for payments",
+      "how often do AI answers mention us vs supabase",
+      "review our mcp server before we submit to the claude directory",
+      "install the github cli and open a PR",
+      "can coding agents actually finish a signup flow with our API",
+      "which AI bots crawled our docs last week, here are the nginx logs",
+      "connect the lightsage MCP server to claude desktop",
+      "is our docs site readable by GPTBot"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "run all our prompts on claude code and codex from the terminal and tell me when it's done",
+      "setup": "lightsage CLI installed and authenticated via LIGHTSAGE_API_KEY; workspace has 40 active prompts; running inside Claude Code (agent mode on).",
+      "checks": [
+        "must look up agent IDs with `lightsage agents list` instead of guessing them",
+        "must preview with --dry-run and state the fan-out (40 prompts x 2 agents) and that it uses usage-based credits, then wait for a yes before `lightsage prompts run`",
+        "must repeat --agent once per agent rather than passing a JSON array string",
+        "must poll `lightsage prompts run-status <run-id>` until a terminal status, using --output-format json",
+        "must NOT state prices, rates or a credit formula"
+      ]
+    },
+    {
+      "prompt": "set up a github actions job that fails if our lightsage visibility score drops",
+      "setup": "Repo with .github/workflows/; no lightsage key in the repo; the user has a Lightsage workspace.",
+      "checks": [
+        "must read the key from a CI secret as LIGHTSAGE_API_KEY and NOT hard-code or echo it",
+        "must install the CLI with the Homebrew tap or a verified release, not an invented installer URL",
+        "must use `lightsage status auth-status-get` to validate auth and `lightsage visibility current-retrieve --output-format json --no-interactive`",
+        "must use short command names (no `v2-` prefixes)"
+      ]
+    },
+    {
+      "prompt": "lightsage cli says unauthorized. i don't think we even have an account, we just want to see if agents mention us",
+      "setup": "CLI installed, no credentials configured, no Lightsage workspace.",
+      "checks": [
+        "must check `lightsage auth whoami` and/or `lightsage status auth-status-get` before concluding",
+        "must explain how to sign up at app.lightsage.com and create a key under Settings > API Keys",
+        "must point to the open measure-ai-visibility skill as the way to do it without an account",
+        "must NOT ask the user to paste an API key into chat"
+      ]
+    }
+  ]
+}
