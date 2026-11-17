@@ -1,7 +1,7 @@
 {
   "name": "lightsage",
-  "version": "0.1.0",
-  "description": "Lightsage skills for Grok — analyze prompt runs and eval results, diagnose patterns, and turn evidence into prioritized actions.",
+  "version": "2.0.0",
+  "description": "Skills for marketers and developer relations teams. Test whether Claude Code and Codex pick you or a competitor, check whether agents can use your API, MCP server or CLI, audit whether AI crawlers can read your site, measure how ChatGPT, Claude, Perplexity and Gemini mention and cite you, and read AI agent traffic from your logs. They work without an account; connect Lightsage to run them across more agents, on a schedule, and act on the results.",
   "logo": "assets/lightsage-logo.svg",
   "author": {
     "name": "Lightsage",
@@ -11,10 +11,13 @@
   "repository": "https://github.com/lightsagehq/lightsage-skills",
   "license": "MIT",
   "keywords": [
+    "ai-visibility",
+    "geo",
+    "aeo",
     "agent-experience",
+    "coding-agents",
     "evals",
-    "visibility",
-    "analytics",
+    "agent-readiness",
     "mcp"
   ]
 }
