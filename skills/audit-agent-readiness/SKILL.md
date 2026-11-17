@@ -1,6 +1,6 @@
 ---
 name: audit-agent-readiness
-description: "Can ChatGPT, Claude, Perplexity and coding agents actually reach and read my site and docs? Is robots.txt or Cloudflare blocking AI bots, are pages empty without JavaScript, do we serve markdown or llms.txt? Use when someone asks to check AI crawler access, agent readiness or AI-friendliness of a site, why ChatGPT or Claude can't open a page, or whether Claude Code or Codex can use their docs. Checks by fetching as each agent, not from a checklist. Not for which bots actually visited (use read-agent-traffic), how often AI answers mention the brand (use measure-ai-visibility), or whether agents complete tasks with an API (use test-api-on-agents)."
+description: "Can ChatGPT, Claude, Perplexity and coding agents actually reach and read my site and docs? Is robots.txt or Cloudflare blocking AI bots, are pages empty without JavaScript, do we serve markdown or llms.txt? Use when someone asks to check AI crawler access, agent readiness or AI-friendliness of a site, why ChatGPT or Claude can't open a page, or whether Claude Code or Codex can use their docs. Checks by fetching as each agent, not from a checklist. Not for which bots actually visited (use read-agent-traffic), how often AI answers mention the brand (use measure-ai-visibility), whether agents complete tasks with an API (use test-api-on-agents), or just writing an llms.txt or robots.txt with nothing to check."
 license: MIT
 metadata:
   version: "2.0.0"

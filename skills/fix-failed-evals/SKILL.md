@@ -1,6 +1,6 @@
 ---
 name: fix-failed-evals
-description: "Why did our eval fail? What broke in last night's run, why did the pass rate drop, and is it our API, our docs or the eval itself? Use when someone wants failed or regressed eval runs diagnosed from results, judge verdicts and traces, with the smallest fix and a way to verify it, for Lightsage workspaces. Not for testing an API on local agents without Lightsage (use test-api-on-agents), agent pick share against a competitor (use track-agent-pick), or how AI answers mention the brand (use fix-ai-answers)."
+description: "Why did our eval fail? What broke in last night's run, why did the pass rate drop, and is it our API, our docs or the eval itself? Use when someone wants failed or regressed eval runs diagnosed from results, judge verdicts and traces, with the smallest fix and a way to verify it, for Lightsage workspaces. Not for testing an API on local agents without Lightsage (use test-api-on-agents), agent pick share against a competitor (use track-agent-pick), how AI answers mention the brand (use fix-ai-answers), or creating or running a new eval (use lightsage-cli)."
 license: MIT
 metadata:
   version: "2.0.0"

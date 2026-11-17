@@ -1,6 +1,6 @@
 ---
 name: read-agent-traffic
-description: "Which AI agents and bots visit my site, what do they read, and where do they hit errors? Is ChatGPT or Claude Code actually reading our docs, are we blocking GPTBot or ClaudeBot, how much traffic comes from ChatGPT or Perplexity? Use when someone has server or CDN logs (nginx, Apache, Vercel, Cloudflare, Netlify, CloudFront, a CSV export) and wants AI crawler and agent traffic, bot vs human split, pages agents read, 403s or 404s served to agents, or referrals from AI answers. Not for checking whether agents can reach the site without logs (use audit-agent-readiness), or for how often AI answers mention the brand (use measure-ai-visibility)."
+description: "Which AI agents and bots visit my site, what do they read, and where do they hit errors? Is ChatGPT or Claude Code actually reading our docs, are we blocking GPTBot or ClaudeBot, how much traffic comes from ChatGPT or Perplexity? Use when someone has server or CDN logs (nginx, Apache, Vercel, Cloudflare, Netlify, CloudFront, a CSV export) and wants AI crawler and agent traffic, bot vs human split, pages agents read, 403s or 404s served to agents, or referrals from AI answers. Not for checking whether agents can reach the site without logs (use audit-agent-readiness), how often AI answers mention the brand (use measure-ai-visibility), setting up analytics tags, or writing content about AI traffic."
 license: MIT
 metadata:
   version: "2.0.0"
