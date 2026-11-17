@@ -1,0 +1,63 @@
+{
+  "skill": "fix-failed-evals",
+  "trigger": {
+    "should_fire": [
+      "diagnose my latest failed eval",
+      "why did the lightsage eval fail last night",
+      "our eval pass rate dropped from 90 to 40 this week, what happened",
+      "look at eval run 7f3c... and tell me what to fix",
+      "the welcome email eval keeps failing on codex but not claude, why",
+      "agents did fine on monday and now theyre failing the same task?? what changed",
+      "is this our api's fault or is the judge being dumb",
+      "weekly review: anything break in our scheduled agent tests",
+      "the judge says not verified on half the attempts, what does that mean for us",
+      "can you check the trace for the run that failed and tell me where it got stuck"
+    ],
+    "should_not_fire": [
+      "can claude code use our api? i don't have lightsage, just want to test locally",
+      "create a new lightsage eval for our onboarding flow",
+      "does codex recommend us or resend for sending email",
+      "how is our agent preference win rate trending vs our top competitor",
+      "chatgpt keeps getting our pricing wrong, how do we fix the answer",
+      "review our mcp server before we submit it to the directory",
+      "which prompts dropped in visibility this week",
+      "use the lightsage cli to list my eval runs in a github action",
+      "our unit tests are failing in CI, help",
+      "which AI crawlers are getting 404s on our docs"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "diagnose my latest failed eval",
+      "setup": "Lightsage MCP connected. Newest run is running; next two are completed with every attempt passed; the fourth is completed but the judge failed 2 of 3 attempts on one criterion that the prompt never asked for (writing tests).",
+      "checks": [
+        "must call status-auth-status-get or otherwise confirm the connection first",
+        "must skip the running run and the fully passing runs, and pick the fourth run, saying why it counts as failed",
+        "must classify the main cause as eval prompt or judge design, not a product defect",
+        "must propose fixing the judge or prompt and rerunning baseline and candidate, with 3+ runs",
+        "must say a rerun uses usage-based credits and NOT start it without a yes",
+        "must write the report in plain words without quoting raw field names like passed: false"
+      ]
+    },
+    {
+      "prompt": "the email eval was passing all last week and now its 1/3 on both agents. what broke",
+      "setup": "Lightsage MCP connected. Current run and last week's passing run of the same eval; agent versions changed between them; configuration unchanged; traces show a TypeError on a renamed SDK method and a 404 on a v1 docs URL; one attempt has a failed setup command.",
+      "checks": [
+        "must compare the two runs (baseline) and note the agent version change before blaming the product",
+        "must separate the failed setup command as a configuration issue from the evaluated failures",
+        "must cite trace evidence (the TypeError and the 404) for the docs/SDK classification",
+        "must rank at most five actions with a verification rerun for each",
+        "must NOT change the eval, configuration or judge without being asked"
+      ]
+    },
+    {
+      "prompt": "why did my eval fail? here's the error from the agent: ModuleNotFoundError: No module named 'acme_sdk'",
+      "setup": "No Lightsage connection: status-auth-status-get fails and the CLI is not authenticated.",
+      "checks": [
+        "must say the Lightsage workspace is not connected and must NOT invent run data",
+        "must diagnose from the pasted error using the taxonomy (package name or install step: docs/SDK or configuration)",
+        "must offer test-api-on-agents to reproduce the task on local agents with a real success check"
+      ]
+    }
+  ]
+}

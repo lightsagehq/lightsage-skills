@@ -1,0 +1,15 @@
+interface:
+  display_name: "Fix AI Answers"
+  short_description: "Turn AI answer evidence into ranked, checkable fixes"
+  default_prompt: "Use $fix-ai-answers to find the 1-3 changes most likely to get us recommended in AI answers."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "lightsage"
+      description: "Lightsage prompt runs, visibility, citations, opportunities and tasks"
+      transport: "streamable_http"
+      url: "https://mcp.lightsage.com/mcp"
+
+policy:
+  allow_implicit_invocation: true

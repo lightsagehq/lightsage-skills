@@ -6,8 +6,12 @@ effect, or when a failure blocks normal execution.
 ## Act on clear intent
 
 - Run relevant reads directly.
-- A clear request to create, update, start an eval run, or delete exact items
-  authorizes that matching action. Do not reconfirm it.
+- A clear request to create, update, or delete exact items authorizes that
+  matching action. Do not reconfirm it.
+- Starting a prompt run or an eval run (including Agent Preference evals) uses
+  usage-based credits. Even when asked, first state the fan-out (prompts x
+  targets, or prompts x agents x runs) and that it uses usage-based credits,
+  then wait for a yes. Say nothing more specific about pricing.
 - Inspect current state first when identity or existing configuration matters.
 - Use `--dry-run` to validate a write when useful. Continue without pausing if
   the serialized request matches the user's intent.
@@ -33,6 +37,13 @@ installed binary when documentation differs.
 **Validation or service error:** Check help and dry-run serialization. Retry an
 idempotent read once after a transient failure. Do not retry an uncertain write
 until list or retrieve proves it did not take effect.
+
+**Not enough credits:** `evals run` returns `402` before dispatching anything.
+Report it; do not shrink the run to fit without asking.
+
+**Placeholder secret:** `evals run` returns `400` when a saved or inline
+environment holds an empty or placeholder credential. Ask the user to set the
+real value in the environment; never ask them to paste it into chat.
 
 ## Verify the outcome
 

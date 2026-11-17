@@ -2,8 +2,18 @@
 
 Use this reference to translate between a Lightsage resource and the CLI
 commands that discover, read, or change it. Command paths were verified against
-Lightsage CLI 0.11.11, built 2026-10-06. Re-check `lightsage --usage` and the
-specific command's help before execution.
+the Lightsage CLI 0.11.24 source, released 2026-11-17. Re-check `lightsage --usage`
+and the specific command's help before execution.
+
+## Contents
+
+- Core relationships
+- Workspace and authentication
+- Prompts and visibility work
+- Agent analytics, site audits and plugin evals
+- Eval definitions and runtime resources
+- Runs and results
+- Typical ID flow
 
 The tables map command paths, not every flag. Obtain required flags and current
 enums from the installed binary.
@@ -38,14 +48,18 @@ unless the returned data explicitly establishes that relationship.
 
 | Purpose | CLI command |
 | --- | --- |
-| Inspect configured credential sources | `lightsage auth whoami` |
+| Inspect configured credential sources | `lightsage auth whoami` (or top-level `lightsage whoami`) |
 | Configure credentials interactively | `lightsage auth login` |
 | Remove configured credentials | `lightsage auth logout` |
+| Save credentials and global settings | `lightsage configure` |
+| Browse commands interactively (people, not scripts) | `lightsage explore` |
 | Check public API availability | `lightsage status get` |
 | Validate the current credential | `lightsage status auth-status-get` |
 
 The public status check does not validate the API key. Credential values shown
-by `auth whoami` are masked.
+by `auth whoami` are masked. The CLI reads `LIGHTSAGE_API_KEY` (or
+`CLI_LIGHTSAGE_API_KEY_AUTH`) from the environment; `auth login` stores the key in
+the OS keychain with a `~/.config/lightsage/config.yaml` fallback.
 
 ## Prompts and visibility work
 
@@ -53,13 +67,25 @@ by `auth whoami` are masked.
 | --- | --- | --- | --- |
 | Topic | `lightsage prompts topics list` | `lightsage prompts topics create`, `update`, `delete` | Topic IDs are accepted by prompt list, create, and update operations. |
 | Prompt | `lightsage prompts list`, `retrieve` | `lightsage prompts create`, `update`, `delete` | Prompt IDs select a prompt and may filter prompt runs. |
-| Prompt run | `lightsage prompts runs list`, `retrieve` | None | A prompt-run ID retrieves one stored answer. |
+| Scheduled targets | `lightsage prompts targets-list` | `lightsage prompts targets-set` | Sets which answer engines and coding agents run a topic's prompts on schedule; the list replaces the topic's targets. |
+| Prompt run (start) | `lightsage prompts run-status`, `run-cancel` | `lightsage prompts run` | Uses usage-based credits. Returns a run ID; poll `run-status <run-id>`. Without prompt IDs it runs every active prompt. |
+| Prompt run (stored answer) | `lightsage prompts runs list`, `retrieve` | None | A stored prompt-run ID retrieves one answer with mentions and citations. |
+| Visibility | `lightsage visibility current-retrieve`, `overview-retrieve`, `prompts-retrieve`, `citations-list`, `citations-summary-retrieve` | None | Computed from stored prompt runs on active prompts. |
 | Opportunity | `lightsage opportunities list`, `retrieve` | None | An opportunity ID retrieves one computed finding and its execution context. |
-| Task | `lightsage tasks list`, `retrieve` | `lightsage tasks update` | A task ID retrieves or updates one persisted action item. |
+| Task | `lightsage tasks list`, `retrieve` | `lightsage tasks create`, `update` | A task ID retrieves or updates one persisted action item. |
 | Site audit | `lightsage site-audits list`, `retrieve` | None | A site ID retrieves one existing audited-page result. |
 
-Listing and retrieving site audits reads existing data; it does not start a
-crawl.
+## Agent analytics, site audits and plugin evals
+
+| Resource | Read | ID relationship |
+| --- | --- | --- |
+| Agent analytics site | `lightsage agent-analytics sites-list` | Returns site IDs used by every other agent-analytics command. |
+| Agent analytics reports | `lightsage agent-analytics summary-retrieve`, `pages-list`, `sources-list`, `countries-list`, `error-pages-list` | Take a site ID and a date range. |
+| Site audit | `lightsage site-audits list`, `retrieve` | A site ID retrieves one audited page with score, evidence and fixes. |
+| Plugin eval results | `lightsage plugin-evals results-list --date YYYY-MM-DD`, `results-download` | One result per plugin per day, each with a `download_url` valid for 15 minutes. |
+
+All of these read existing data. Listing site audits does not start a crawl, and
+plugin evals are set up and started in the Lightsage app.
 
 ## Eval definitions and runtime resources
 
@@ -95,7 +121,8 @@ surface and ask before switching interfaces.
 | Read the event log | `lightsage evals trace` | Takes the eval-run ID. Page with `--after-id`. |
 | Cancel | `lightsage evals cancel` | Takes the eval-run ID. |
 
-Starting an eval run consumes credits. Progress may reach 100 percent before
+Starting an eval run uses usage-based credits; state the fan-out and get a yes
+first. Progress may reach 100 percent before
 the parent status is terminal, so use the run's status to decide when polling is
 complete.
 

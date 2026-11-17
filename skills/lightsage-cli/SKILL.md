@@ -1,127 +1,70 @@
 ---
 name: lightsage-cli
-description: Operate and troubleshoot Lightsage from a terminal, shell script, or CI workflow. Use only when the user explicitly asks for the `lightsage` CLI, command-line execution, scripting, or CI/CD. Do not use for outcome analysis that can be completed through a connected Lightsage MCP capability.
+description: "\"List my Lightsage prompts from the shell\", \"kick off a Lightsage eval in our GitHub Action\", \"script a weekly export of our visibility numbers\", \"lightsage: command not found\", \"auth keeps failing in CI\". Runs the `lightsage` CLI for Lightsage workspaces. Use when someone wants a terminal command, shell script, cron job or CI step that reads or changes Lightsage prompts, prompt runs, evals, tasks, visibility, agent analytics, site audits or plugin eval results, or needs to install, authenticate or debug the CLI. Not for deciding what prompt-run or eval results mean or what to fix (use fix-ai-answers or fix-failed-evals), and not for work done through the connected Lightsage MCP server in chat."
+license: MIT
+metadata:
+  version: "2.0.0"
 ---
 
 # Lightsage CLI
 
-Use the installed CLI to carry out the user's Lightsage task accurately and
-safely. Teach CLI mechanics; leave goal-oriented journeys to workflow skills.
+Carry out the user's Lightsage task with the installed `lightsage` binary, accurately and safely. This skill is CLI mechanics; outcome reasoning lives in the workflow skills.
 
-## Operating loop
+- The installed binary is the authority for command names and flags. Docs and older examples can lag it.
+- Never print, paste or pass an API key on the command line. Use `lightsage auth login` locally or the `LIGHTSAGE_API_KEY` environment variable from a secret store in CI.
+- `lightsage prompts run` and `lightsage evals run` (including Agent Preference evals) use usage-based credits. Before running one, say what it fans out to (prompts x targets, or prompts x agents x runs) and that it uses usage-based credits, then wait for a yes. Never describe pricing beyond that.
+- Never retry a write whose outcome is uncertain, and never turn "archive" or "remove from this config" into a permanent delete.
 
-1. Understand the user's intended outcome.
-2. Check only the prerequisites needed, then discover the current command and
-   flags from the installed binary.
-3. Resolve real resource IDs and execute the action when it matches the user's
-   intent. Preview writes when useful.
-4. Verify the outcome and report the important IDs or blockers.
+## Before you start
 
-## Establish readiness
+1. `lightsage version`. If the command is missing, ask before installing, then `brew install lightsagehq/tools/lightsage` (macOS and Linux). Don't use an installer URL you haven't verified.
+2. `lightsage auth whoami` shows where credentials come from (`[env]`, `[keyring]`, `[config]`) with values masked. Then `lightsage status auth-status-get --no-interactive` validates the key and returns its organization and scopes. `lightsage status get` only checks that the API is up.
+3. No key or no workspace: follow "Without a Lightsage workspace" below.
 
-- Run `lightsage version` before giving version-sensitive commands.
-- Use `lightsage auth whoami` to inspect credential configuration; it masks
-  credential values. Use `lightsage status auth-status-get` when the task
-  requires validating the credential against the service.
-- If `lightsage` is unavailable, stop and direct the user to the current
-  Lightsage CLI documentation. Do not invent or reuse an unverified installer.
-- Do not print, persist, or pass API keys on the command line. Prefer the
-  interactive login or the customer's existing secret-management mechanism.
+## Steps
 
-## Discover commands from the binary
+1. **Find the command.** `lightsage --usage` prints the whole tree as KDL (commands, flags, defaults, env vars). Then `lightsage <group> <command> --help` for one command. These work without credentials.
+2. **Resolve IDs.** IDs are opaque: list, match on stable fields (name, URL, status), retrieve when identity matters. If several match, ask. If the list is empty, report the missing prerequisite; never invent an ID.
+3. **Preview writes.** `--dry-run` prints the exact request to stderr and ends with `[DRY-RUN] Network call skipped.`. `--schema` prints the JSON Schema for commands that take `--body`. Summarize the method, path and body for the user.
+4. **Execute** when the preview matches the request (after the credit yes, for runs). Use long command names, `--no-interactive` in scripts, and `--output-format json` before any `--jq`.
+5. **Verify and report.** Retrieve the changed resource or poll the run, then state what was inspected or changed, the resource ID and how you verified it. An exit code or a dry run is not proof.
 
-Treat the installed binary as the authority for command names and flags:
+Read [references/resource-model.md](references/resource-model.md) when choosing a command for a resource or following IDs between resources. Read [references/command-patterns.md](references/command-patterns.md) for verified examples of discovery, JSON output, repeated flags, dry runs and polling. Read [references/safety-and-recovery.md](references/safety-and-recovery.md) when a write may not match the user's intent, or when auth, empty catalogs, validation or service errors block the task.
 
-1. Run `lightsage --usage` to inspect the complete command tree.
-2. After confirming that a command exists, run
-   `lightsage <command-path> --help` for its flags and accepted values.
-3. Use `--dry-run` to verify how a write serializes before sending it.
-4. Use the published documentation for concepts and examples, not to override
-   the installed command surface.
+## Command groups (CLI 0.11.24, 2026-11-17)
 
-When the docs and binary disagree, state the installed version and follow
-the binary.
+| Group | What it covers |
+|---|---|
+| `auth login / whoami / logout`, `whoami`, `configure` | Credentials and saved settings |
+| `status get / auth-status-get` | API liveness; key validation |
+| `prompts list / create / retrieve / update / delete`, `prompts topics ...`, `prompts targets-list / targets-set` | Tracked prompts, topics and scheduled targets |
+| `prompts run / run-status / run-cancel`, `prompts runs list / retrieve` | Start, poll and read prompt runs |
+| `visibility current-retrieve / overview-retrieve / prompts-retrieve / citations-list / citations-summary-retrieve` | Visibility scores and citations |
+| `opportunities list / retrieve`, `tasks list / create / retrieve / update` | Ranked opportunities and the task queue |
+| `evals list / create / retrieve / update / delete / batch-create`, `evals configurations ...`, `eval-templates ...` | Eval definitions and saved runtimes |
+| `evals run / get / monitor / trace / cancel`, `eval-runs list` | Start and follow eval runs |
+| `agent-preference evals ...`, `agent-preference competitors list`, `agent-preference head-to-head retrieve` | Head-to-head pick evals |
+| `agents / environments / mcp-servers / clis / skills list`, `repositories ...` | Catalogs for eval runs |
+| `site-audits list / retrieve`, `agent-analytics sites-list / summary-retrieve / pages-list / sources-list / countries-list / error-pages-list` | Existing audit results; agent and bot traffic |
+| `plugin-evals results-list / results-download` | Plugin eval results for a day |
 
-## Understand the resource model
+## Gotchas
 
-```text
-Topic → Prompt → Prompt run
-Opportunity    Task    Site audit
+- Inside Claude Code, Cursor and other detected agent environments the CLI turns on agent mode: structured errors and TOON output by default. Pass `--output-format json` whenever you parse output or use `--jq`.
+- Generated docs and some READMEs show `v2-` names (`lightsage prompts v2-prompts-list`). The shipped binary uses short names (`lightsage prompts list`). Follow `--usage`.
+- `lightsage prompts run` with no `--prompt-ids` runs every active prompt on every configured target. Pass IDs unless the user asked for all, and confirm the size.
+- `evals run` fans out prompts x agents x runs; a persona doesn't multiply attempts. It fails with `402` before dispatch if credits are short, and `400` if an environment holds an empty or placeholder secret.
+- Progress can reach 100 percent before a run's status is terminal. Poll `evals get <run-id>` or `prompts run-status <run-id>` until the status is terminal. There is no separate eval-results command: `evals get` returns results and analysis once attempts finish.
+- Agent Preference evals don't appear in `evals list`; list them with `agent-preference evals list` and start them with `evals run --eval-id <id>`.
+- List flags repeat once per value (`--agent <id> --agent <id>` with IDs from `agents list`; also `--judge`, `--prompt`, `--cli`, `--mcp`). Don't pass a JSON array string; check the dry-run body.
+- `agents`, `environments`, `mcp-servers`, `clis` and `skills` are list-only. An empty catalog means setup is needed in the Lightsage app; don't invent a create command.
+- `site-audits` and `agent-analytics` read existing data; they never start a crawl.
+- A plugin eval `download_url` works without a key for 15 minutes. Download it right away (`curl -o results.zip "<download_url>"`) or use `plugin-evals results-download --output-file`.
+- `auth login` is interactive and stores the key in the OS keychain. In CI, set `LIGHTSAGE_API_KEY` from the secret store and add `--no-interactive`.
 
-Eval + Configuration + Agent → Eval run → Results and analysis
-       ├── Repository
-       ├── Environment
-       ├── CLIs and skills
-       ├── MCP servers
-       └── Docs
-```
+## Without a Lightsage workspace
 
-Use the eval-run ID for everything after a run starts: `lightsage evals get`
-returns its status and, once attempts finish, their results and analysis. There
-is no separate eval-result command. The resources from `lightsage skills list`
-are reusable Lightsage context packages, not local Agent Skills such as this
-one.
+Everything except `--help`, `--usage`, `--schema`, `--dry-run` and `status get` needs an API key from a Lightsage workspace.
 
-Treat all IDs as opaque. List the relevant catalog, match on stable fields, and
-retrieve the selected resource when identity matters. If multiple resources
-match, ask the user to choose. If the catalog is empty, report the missing
-prerequisite instead of inventing an ID.
-
-Read [references/resource-model.md](references/resource-model.md) when choosing
-the command for a resource, following IDs between resources, or determining
-which catalogs are read-only in the current CLI.
-
-## Execute predictably
-
-- Use long command names in commands shown to the user; do not use generated
-  aliases.
-- Prefer `--output-format json` for programmatic inspection and `table` for a
-  compact human inventory. Use `--jq` only after confirming the response shape.
-- Treat `--jq` output as JSON rather than assuming it is raw shell text.
-- Repeat list-valued flags once per value unless the current help or dry run
-  demonstrates another representation.
-- Prefer individual flags for short requests. Use `--body` or stdin when a
-  structured payload is clearer or avoids fragile shell quoting.
-- Add `--no-interactive` in automation when a prompt or explorer would block.
-
-Read [references/command-patterns.md](references/command-patterns.md) for
-verified examples of discovery, output handling, ID chaining, repeated flags,
-and write previews.
-
-## Follow the user's intent
-
-- Perform read-only inspection directly when it is within the user's request.
-- A clear request to create, update, run a credit-consuming operation, or delete
-  exact items authorizes that matching action. Do not ask for redundant
-  confirmation.
-- Inspect relevant state and use `--dry-run` when it helps validate a write,
-  but continue without interrupting the user when the serialized action still
-  matches the request.
-- Clarify only when the target is ambiguous, required information is missing,
-  the CLI action has materially different consequences, or execution would
-  expand beyond the requested scope.
-- Never substitute permanent deletion when the user asked for a reversible
-  archive, disable, or removal from one configuration.
-- Never retry a write whose outcome is uncertain until current state proves
-  that the first attempt did not take effect.
-
-Read [references/safety-and-recovery.md](references/safety-and-recovery.md)
-when action semantics may differ from the user's intent or when authentication,
-empty state, validation, or service failures block the task.
-
-## Finish with evidence
-
-After an operation, state what was inspected or changed, the relevant resource
-ID, and how success was verified. If blocked, name the missing prerequisite and
-the smallest safe next step. Do not claim success from a dry run or from an exit
-code alone when the resource can be retrieved and verified.
-
-## Boundaries
-
-This skill covers CLI operation across Lightsage product areas. It does not
-choose prompts, judges, models, growth priorities, or end-to-end onboarding
-journeys. It does not silently fall back to the public API, MCP, dashboard, or
-private Lightsage procedures when the CLI lacks an operation. Explain the
-boundary and ask before changing interfaces. Keep outcome-oriented prompt-run
-and eval-result reasoning in their dedicated skills; this skill supplies CLI
-mechanics only when the request explicitly selects a command-line workflow.
+- To get one: sign up at https://app.lightsage.com, then create a key under Settings > API Keys. Keys are shown once; store them in a secret manager, never in the repo.
+- Until then, the open skills do the same jobs locally: measure-ai-visibility (instead of prompt runs and visibility), test-agent-pick (instead of Agent Preference evals), test-api-on-agents (instead of evals), audit-agent-readiness (instead of site audits), read-agent-traffic (instead of agent analytics), review-mcp-server (instead of plugin evals).

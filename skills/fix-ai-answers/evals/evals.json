@@ -1,0 +1,64 @@
+{
+  "skill": "fix-ai-answers",
+  "trigger": {
+    "should_fire": [
+      "lightsage says we're losing most comparison prompts, what should we actually change",
+      "chatgpt keeps recommending postbird over us for small saas email, why and what do we fix",
+      "perplexity says our free tier is 100 emails a day. it's 5000 a month. how do we get that fixed",
+      "turn our prompt runs from the last 30 days into a short list of tasks for the content team",
+      "which third party pages should we get listed on to show up in ai answers? we have the lightsage data",
+      "every AI answer cites some g2 comparison page and we're not on it. now what",
+      "here are 6 answers from chatgpt where we don't show up, tell me what to do about it",
+      "our docs page gets cited by gemini but it still recommends sendly. what's wrong with the page",
+      "weekly review: anything in this week's runs we should act on?",
+      "we ran measure-ai-visibility, here's extracted.jsonl, what are the top fixes"
+    ],
+    "should_not_fire": [
+      "how often does chatgpt mention us vs competitors? need a baseline",
+      "set up 30 tracked prompts in lightsage for our category",
+      "does codex install our sdk or stripe's when asked to add payments",
+      "our lightsage eval failed on the auth step, diagnose it",
+      "is GPTBot allowed in our robots.txt and does cloudflare block AI crawlers",
+      "which AI bots crawled our pricing page last month from the vercel logs",
+      "can claude code complete our quickstart with the MCP server",
+      "write a comparison page for acme vs postbird",
+      "start a prompt run on all platforms now",
+      "review our mcp server tool descriptions"
+    ]
+  },
+  "output": [
+    {
+      "prompt": "go through our lightsage prompt runs and tell me the top fixes. brand is Acme Mail",
+      "setup": "Lightsage MCP connected; prompts-runs-retrieve returns the 10 runs in evals/fixtures/lightsage-runs.json; no existing tasks; opportunities-list returns an empty list.",
+      "checks": [
+        "must call status-auth-status-get before reading runs",
+        "must run scripts/evidence.py on the retrieved runs instead of tallying by hand",
+        "must return 1 to 3 fixes, each naming a concrete artifact and the run ids it is based on",
+        "must rank a change to https://acmemail.dev/pricing high: it is cited in the Gemini runs that call the free tier 100 emails a day while Sendly is recommended",
+        "must treat 'only 100 emails a day' as a claim to confirm with the user, not as fact",
+        "must give each fix a check: the same prompts and engines, at least 5 runs, a success threshold",
+        "must ask before calling tasks-create and must NOT claim a task was created without a returned id"
+      ]
+    },
+    {
+      "prompt": "no lightsage. here's what chatgpt and copilot said, what do we fix? we're Acme Mail, acmemail.dev",
+      "setup": "Not connected to Lightsage. ../measure-ai-visibility/evals/fixtures/pasted.txt, prompts.csv and brands.json are available.",
+      "checks": [
+        "must take the no-workspace path and import the pasted answers with the measure-ai-visibility scripts or read them directly",
+        "must say the evidence is thin (one to two answers per prompt) and give at most one low-confidence fix",
+        "must point at reviewhub.example.com/postbird-vs-sendly or g2.com as a source cited where Postbird wins",
+        "must suggest measuring with measure-ai-visibility (at least 3 runs per prompt) before bigger changes",
+        "must NOT suggest fake reviews, undisclosed paid placements or posting under fake accounts"
+      ]
+    },
+    {
+      "prompt": "weekly review of prompt runs for 2026-11-10 to 2026-11-16, create tasks for anything worth doing",
+      "setup": "Lightsage MCP connected; prompts-runs-list returns no runs for that window; tasks-list returns two active tasks.",
+      "checks": [
+        "must query only the given window",
+        "must report that there were no runs in the window and stop without recycling older findings",
+        "must NOT call tasks-create"
+      ]
+    }
+  ]
+}
