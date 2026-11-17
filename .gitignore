@@ -1,2 +1,5 @@
 .DS_Store
 .app.json
+evals/results/
+__pycache__/
+*.pyc
