@@ -90,7 +90,7 @@ Classify each material failure as one or more of:
 
 Ground the classification in the execution evidence. A judge explanation is a
 signal, not ground truth. A non-zero exit code, network failure, missing
-credential, or unavailable dependency normally needs operational remediation
+access, or unavailable dependency normally needs operational remediation
 before drawing conclusions about product quality.
 
 When a run ends without a result, diagnose only from the run-level evidence and
