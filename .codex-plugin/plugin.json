@@ -1,6 +1,6 @@
 {
   "name": "lightsage",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Turn prompt-run and eval evidence into prioritized, verifiable actions",
   "author": {
     "name": "Lightsage",
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Lightsage",
     "shortDescription": "Agent discovery and usability",
-    "longDescription": "Lightsage shows how AI assistants and coding agents talk about and use your product. With this plugin you can review your stored prompt runs to see where your brand is mentioned, recommended, and cited, diagnose eval runs that failed or regressed, and get a short list of prioritized actions backed by that evidence. It is for marketing, developer relations, and product teams who already use Lightsage. The plugin works on the Lightsage organization you choose when you sign in, and it needs a Lightsage account. It analyzes runs you already have; start new prompt runs from the Lightsage dashboard.",
+    "longDescription": "Track how AI assistants and coding agents mention, recommend, and cite your brand, and how well coding agents use your product. Review visibility, citations, and share of voice against competitors, diagnose eval runs that failed or regressed, and get prioritized actions backed by that evidence. For teams that use Lightsage; sign in with your Lightsage account.",
     "developerName": "Lightsage",
     "category": "Developer Tools",
     "capabilities": [

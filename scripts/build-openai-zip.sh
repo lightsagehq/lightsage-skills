@@ -32,6 +32,29 @@ for skill in skills/*/; do
 done
 find "$stage" -name .DS_Store -delete
 
+# Review details for OpenAI (test cases, demo video URL) are kept out of this
+# public repo, and out of the plugin users install from it, in the gitignored
+# review.private.json at the repo root. They go only into this ZIP, under
+# extensions.com.openai.review. Without the file the ZIP has no review section,
+# and the dashboard keeps the test cases it already has.
+if [ -f review.private.json ]; then
+  python3 - "$stage/plugin.json" review.private.json <<'PY'
+import json, sys
+manifest_path, review_path = sys.argv[1], sys.argv[2]
+manifest = json.load(open(manifest_path))
+openai = manifest["extensions"]["com.openai"]
+publication = openai.pop("publication", None)
+openai["review"] = json.load(open(review_path))
+if publication is not None:
+    openai["publication"] = publication
+with open(manifest_path, "w") as f:
+    json.dump(manifest, f, indent=2, ensure_ascii=False)
+    f.write("\n")
+PY
+else
+  echo "No review.private.json: building without review details" >&2
+fi
+
 # Every skill a packaged skill points to must be in the package.
 if grep -rq "lightsage-cli" "$stage/skills"; then
   echo "A packaged skill still refers to lightsage-cli" >&2

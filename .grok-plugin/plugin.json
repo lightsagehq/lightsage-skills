@@ -1,6 +1,6 @@
 {
   "name": "lightsage",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Lightsage skills for Grok — analyze prompt runs and eval results, diagnose patterns, and turn evidence into prioritized actions.",
   "logo": "assets/lightsage-logo.svg",
   "author": {

@@ -2,7 +2,7 @@
   "name": "lightsage",
   "displayName": "Lightsage",
   "description": "Skills and MCP server for Lightsage — analyze prompt runs and eval evidence, diagnose issues, and turn findings into prioritized actions.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "logo": "assets/lightsage-logo.svg",
   "author": {
     "name": "Lightsage",
