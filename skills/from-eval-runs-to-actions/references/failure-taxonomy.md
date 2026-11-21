@@ -56,7 +56,7 @@ can reveal an eval-design problem without revealing a product problem.
 
 ### Configuration or environment
 
-Use for missing repositories, credentials, dependencies, environment values,
+Use for missing repositories, access, dependencies, environment values,
 supporting skills, CLIs, or MCP servers. Verify that the selected configuration
 is known before attributing a difference to it.
 

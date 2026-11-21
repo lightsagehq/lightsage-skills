@@ -1,0 +1,15 @@
+interface:
+  display_name: "Get Started"
+  short_description: "Check your connection and pick a workflow"
+  default_prompt: "Use $get-started to check my Lightsage connection and show me what I can do."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "lightsage"
+      description: "Lightsage auth status, prompt-run, and eval tools"
+      transport: "streamable_http"
+      url: "https://mcp.lightsage.com/mcp"
+
+policy:
+  allow_implicit_invocation: true
