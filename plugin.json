@@ -44,6 +44,58 @@
         "logo": "./assets/lightsage-icon.png",
         "logoDark": "./assets/lightsage-icon.png"
       },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Confirm the plugin is connected and signed in to the right Lightsage organization",
+              "prompt": "Using Lightsage, check that I'm connected and tell me which organization this connection uses.",
+              "tools_triggered": "auth-status-get",
+              "expected_behavior": "Confirms the connection is authenticated and states the organization ID and the permissions the connection has."
+            },
+            {
+              "description": "See how visible the brand is in AI answers and how it compares with competitors",
+              "prompt": "Using Lightsage, how visible is my brand in AI answers, and how do we compare with competitors?",
+              "tools_triggered": "visibility-overview-retrieve",
+              "expected_behavior": "A summary with the recommendation score and visibility score, the trend over the period, a breakdown by AI platform, and a comparison against tracked competitors."
+            },
+            {
+              "description": "Turn recent prompt runs into a short list of actions",
+              "prompt": "Using Lightsage, look at my recent prompt runs and give me the three most important things to fix.",
+              "tools_triggered": "prompts-runs-list, then prompts-runs-retrieve",
+              "expected_behavior": "Three prioritized actions, each tied to specific prompt runs, naming the prompt, the platform, and what the response said about the brand (mentions, position, citations)."
+            },
+            {
+              "description": "Find the best opportunities to improve AI visibility",
+              "prompt": "Using Lightsage, what are my best opportunities to improve AI visibility this month?",
+              "tools_triggered": "opportunities-list",
+              "expected_behavior": "A ranked list of opportunities from the last 30 days, each with a short explanation of the gap and a suggested next step."
+            },
+            {
+              "description": "Diagnose the most recent eval run",
+              "prompt": "Using Lightsage, what happened in my most recent eval run, and what should I change?",
+              "tools_triggered": "eval-runs-list, then eval-runs-retrieve",
+              "expected_behavior": "The latest eval run with its status, which attempts failed and why, and one specific change to try next. If nothing failed, it says so."
+            }
+          ],
+          "negative": [
+            {
+              "description": "The user asks about traditional search rankings and website traffic. Lightsage measures how AI assistants mention and cite a brand, not Google rankings or web analytics, so the plugin should not be used.",
+              "prompt": "What is my website's Google ranking for 'project management software', and how much traffic did I get last week?"
+            },
+            {
+              "description": "The user asks a general question about improving AI visibility, with no reference to their own Lightsage data. This is a general knowledge question and should be answered without calling the plugin.",
+              "prompt": "In general, what makes a brand more likely to be recommended by AI assistants?"
+            },
+            {
+              "description": "The user asks for help evaluating their own machine learning model. Lightsage evals test how coding agents use a company's product, not model training or accuracy, so the plugin should not be used.",
+              "prompt": "Help me evaluate the accuracy of my image classification model on my test set."
+            }
+          ]
+        },
+        "demo_recording_url": "https://youtu.be/_HYBo1dCwEo",
+        "commerce": false
+      },
       "publication": {
         "release_notes": "Removes the command-line skill from this package. The Lightsage MCP server no longer takes environment variables or MCP server headers in tool inputs; run settings come from the environments and MCP servers saved in the Lightsage app. Renames tools whose names did not match what they do, asks for confirmation before runs that use usage-based credits, and the privacy policy now covers AI assistant connections."
       }
